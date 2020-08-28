@@ -1,0 +1,45 @@
+<ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" [routerLink]="['/poster']" >
+      <div class="sidebar-brand-icon">
+        <img src="../../../../assets/img/logo/logo.png">
+      </div>
+      <div class="sidebar-brand-text mx-3">RuangAdmin</div>
+    </a>
+    <hr class="sidebar-divider my-0">
+    <li class="nav-item active">
+      <a class="nav-link" [routerLink]="['/poster']" >
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span></a>
+    </li>
+    <hr class="sidebar-divider">
+    <div class="sidebar-heading">
+      Area
+    </div>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
+        aria-expanded="true" aria-controls="collapseBootstrap">
+        <i class="far fa-fw fa-window-maximize"></i>
+        <span>Publicacion</span>
+      </a>
+      <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Publicacion</h6>
+          <a class="collapse-item" [routerLink]="['publicacion/crear']" >Crear</a>
+          <a class="collapse-item" [routerLink]="['publicacion/editar']" >Editar</a>
+          <a class="collapse-item" [routerLink]="['publicacion/eliminar']" >Eliminar</a>
+          <a class="collapse-item" [routerLink]="['dashboard']" >Seguimiento</a>
+        
+        </div>
+      </div>
+    </li>
+   
+    
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['nosotro']"  >
+        <i class="fas fa-fw fa-chart-area"></i>
+        <span>Sobre Nosotros</span>
+      </a>
+    </li>
+    <hr class="sidebar-divider">
+    <div class="version" id="version-ruangadmin"></div>
+  </ul>
