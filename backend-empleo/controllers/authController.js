@@ -5,6 +5,8 @@ const Usuario = require('../model/usuario');
 
 const generarJWT = require('../middlewares/generarJWT');
 
+const {googleVerify} = require('../middlewares/googleVerify');
+
 const controlador = {
 
 
@@ -98,6 +100,76 @@ const controlador = {
             );
         }
 
+    },
+
+    renewnew: async (req , res)=>{
+
+        const id = req.usuario.id;
+
+        const token = generarJWT(id);
+
+        return res.status(200).send({
+
+            status: "OK",
+            token
+        })
+
+    },
+
+    googleSignIn: async(req, res)=>{
+
+        const token = req.body.token;
+
+        try {
+            const { name, email, picture } = await googleVerify(token);
+
+            const usuarios = await Usuario.findOne({ email });
+            let usuario;
+
+            if (!usuarios) {
+
+                usuario = new User({
+
+                    email: email,
+                    password: "123",
+                    google: true
+
+                });
+            } else {
+
+                usuario = usuarios;
+                usuario.google = true;
+            }
+
+            const newuser =  Usuario.create(usuario,async (err, user) => {
+
+                if(err || !user){
+
+                    return res.status(400).send({
+                        status:'error',
+                        mensaje: "se ha producido un error a guardar este usuario",
+                        err
+                    })
+                }
+
+                return await res.status(200).send({
+
+                    status: "OK",
+                    user,
+                });
+
+                
+            });
+
+        } catch (error) {
+
+            return await res.status(200).send({
+
+                status: "error",
+                mensaje: "Token no es correcto",
+                error
+            });
+        }
     }
 
 

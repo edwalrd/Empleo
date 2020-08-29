@@ -10,8 +10,6 @@ const { roles_verificacion, verificacion } = require('../middlewares/verifyToken
 
 router.get('/usuario/prueba', verificacion, roles_verificacion('admin','poster') , controlador.prueba);
 
-router.post('/usuario/crear' , controlador.crearUsuario);
-
 // Eliminar Usuario
 router.delete('/usuario/eliminar/:id' , controlador.eliminar);
 

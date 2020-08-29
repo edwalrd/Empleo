@@ -18,62 +18,6 @@ const controlador = {
         });
     },
 
-    crearUsuario: async (req, res) => {
-
-        const params = req.body;
-
-        try {
-
-            var validacionNombre = !validator.isEmpty(params.nombre);
-            var validacionApellido = !validator.isEmpty(params.apellido);
-            var validacionEmail = !validator.isEmpty(params.email);
-            var validacionPassoword = !validator.isEmpty(params.password);
-
-        } catch (error) {
-
-            return res.status(400).send({
-                status: "error",
-                mesanje: "Faltan datos por enviar"
-            });
-        }
-
-        if (validacionNombre && validacionApellido && validacionEmail && validacionPassoword == true) {
-
-            const usuario = await Usuario.findOne({ email: params.email });
-
-
-            if (usuario) return res.status(400).send({ mesanje: "Este usuario ya existe" });
-
-
-            await Usuario.create(params, (err, usuario) => {
-
-                if (!usuario || err) {
-
-                    return res.status(400).send({
-                        status: "error",
-                        err
-                    });
-                }
-
-                return res.status(200).send({
-                    status: "OK",
-                    usuario
-                })
-
-            });
-
-        } else {
-            return res.status(404).send({
-                mesanje: 'Los datos no son validos'
-            });
-        }
-
-
-
-
-
-    },
-
     eliminar: async (req, res) => {
 
         const user_id = req.params.id;
