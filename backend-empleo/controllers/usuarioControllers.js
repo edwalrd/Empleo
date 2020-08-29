@@ -6,7 +6,6 @@ const Usuario = require('../model/usuario');
 
 const controlador = {
 
-<<<<<<< HEAD:backend-empleo/controladores/usuario.js
     prueba: (req, res) => {
 
         return res.status(200).send({
@@ -17,9 +16,6 @@ const controlador = {
     },
 
     crearUsuario: async (req, res) => {
-=======
-    crearUsuario: (req, res) => {
->>>>>>> 5fc64e05fce050ab2f2468c8cee1254a8bd87935:backend-empleo/controllers/usuarioControllers.js
 
         const params = req.body;
 

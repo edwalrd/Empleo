@@ -4,7 +4,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const controlador = require('../controladores/usuario');
+const controlador = require('../controllers/usuarioControllers');
 
 router.get('/usuario/prueba' , controlador.prueba);
 
