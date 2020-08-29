@@ -16,11 +16,10 @@ mongoose.connect(process.env.ConexionBD, {
     useUnifiedTopology: true
 }).then(() => {
 
-    console.log("Conexion con base de datos perfecta");
 
     app.listen(process.env.Port , ()=>{
 
-        console.log('servidor corriendo en http://localhost:' + process.env.Port );
+        console.log('Server running in http://localhost:' + process.env.Port );
     })
 
 }).catch(err => {
