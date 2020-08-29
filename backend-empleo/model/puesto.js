@@ -13,6 +13,32 @@ const puestoSchema = new Schema({
     empresa:{
         type:String,
         required:true
+    },
+    logo:{
+        type:String
+    },
+    tipo:{
+        type:String,
+        required:true
+    },
+    url:{
+        type:String
+    },
+    categorias:{
+        type:String,
+        required:true
+    },
+    descripcion:{
+        type:String,
+        required:true
+    },
+    aplicar:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
     }
 });
 
