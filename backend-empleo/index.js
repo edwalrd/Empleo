@@ -13,8 +13,7 @@ mongoose.Promise = global.Promise;
 
 mongoose.connect(process.env.ConexionBD, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true
+    useUnifiedTopology: true
 }).then(() => {
 
     console.log("Conexion con base de datos perfecta");
