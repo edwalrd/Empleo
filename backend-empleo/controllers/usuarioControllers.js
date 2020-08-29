@@ -8,10 +8,13 @@ const controlador = {
 
     prueba: (req, res) => {
 
+        const usuario = req.usuario;
+
         return res.status(200).send({
 
             status: "OK",
-            mensaje: "prueba"
+            mensaje: "prueba",
+            usuario
         });
     },
 

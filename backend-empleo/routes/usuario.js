@@ -6,7 +6,9 @@ const router = express.Router();
 
 const controlador = require('../controllers/usuarioControllers');
 
-router.get('/usuario/prueba' , controlador.prueba);
+const { roles_verificacion, verificacion } = require('../middlewares/verifyToken');
+
+router.get('/usuario/prueba', verificacion, roles_verificacion('admin','poster') , controlador.prueba);
 
 router.post('/usuario/crear' , controlador.crearUsuario);
 

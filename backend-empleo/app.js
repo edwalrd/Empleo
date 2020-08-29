@@ -13,8 +13,9 @@ app.use(bodyparser.json());
 
 const puesto = require('./routes/puesto');
 const usuario = require('./routes/usuario');
+const auth = require('./routes/auth');
 
-app.use('/api',puesto,usuario);
+app.use('/api',puesto,usuario,auth);
 
 
 module.exports = app;
