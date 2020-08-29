@@ -45,17 +45,25 @@ const puestoController = {
         var validationUbicacion = !validator.isEmpty(params.ubicacion);
         var validationPosicion = !validator.isEmpty(params.posicion);
         var validationEmpresa = !validator.isEmpty(params.empresa);
-        
+        var validationTipo = !validator.isEmpty(params.tipo);
+        var validationCategorias = !validator.isEmpty(params.categorias);
+        var validationDescription = !validator.isEmpty(params.descripcion);
+        var validationAplicar = !validator.isEmpty(params.aplicar);
+        var validationEmail = !validator.isEmpty(params.email);
+
+
 
     } catch (error) {
 
         return res.status(400).send({
             status: "error",
-            mesanje: "Faltan datos por enviar"
+            message: "Faltan datos por enviar"
         });
     }
 
-    if(validationUbicacion & validationPosicion & validationEmpresa== true ){
+    if(validationUbicacion & validationPosicion & validationEmpresa & validationTipo & 
+      validationCategorias & validationDescription & validationAplicar
+      & validationEmail == true ){
         Puesto.create(params,(error,puesto)=>{
             if(error || !puesto){
                 return res.status(500).send({
