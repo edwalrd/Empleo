@@ -11,9 +11,9 @@ app.use(cors());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 
-const usuario = require('./rutas/usuario');
+const routes = require('./routes/index');
 
-app.use('/api', usuario);
+app.use('/api', routes);
 
 
 module.exports = app;

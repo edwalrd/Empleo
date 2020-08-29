@@ -6,15 +6,6 @@ const Usuario = require('../model/usuario');
 
 const controlador = {
 
-    prueba: (req, res) => {
-
-        return res.status(200).send({
-
-            status: "OK",
-            mensaje: "prueba"
-        });
-    },
-
     crearUsuario: (req, res) => {
 
         const params = req.body;
