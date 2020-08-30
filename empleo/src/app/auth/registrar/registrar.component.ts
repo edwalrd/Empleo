@@ -3,6 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 
 import { AuthService } from "../../servicios/auth.service";
+import { Router } from '@angular/router';
+
+import swal from 'sweetalert';
+
+
 
 @Component({
   selector: 'app-registrar',
@@ -11,7 +16,13 @@ import { AuthService } from "../../servicios/auth.service";
 })
 export class RegistrarComponent implements OnInit {
 
-  constructor(private fb: FormBuilder, private _service: AuthService) { }
+  constructor(
+    
+    private fb: FormBuilder, 
+    private _service: AuthService,
+    private _router: Router
+
+    ) { }
 
   ngOnInit(): void {
 
@@ -42,24 +53,21 @@ export class RegistrarComponent implements OnInit {
 
   }
 
-  guardar() {
+  async guardar() {
 
-    this._service.registrar(this.registrar.value).subscribe(
+    await this._service.registrar(this.registrar.value).subscribe(
 
-      resp => { 
+      resp => {
 
-        console.log(resp);
-        
-      }
+        // swal("Good job!", "Bienvenido", "success");
+        this._router.navigate(['/poster']);
+
+      }, error => {
+
+        swal("Oh noes!", error.error.msg, "error");
 
 
-    ) , (err) =>{
-
-      console.log(err);
-      
-    }
-
-    console.log(this.registrar.value);
+      });
 
 
   }

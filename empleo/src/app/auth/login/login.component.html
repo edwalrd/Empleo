@@ -10,40 +10,57 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                     </div>
-                                    <form class="user">
+                                    <form (submit)="login()" [formGroup]="loginData" class="user">
+
                                         <div class="form-group">
                                             <input type="email" class="form-control" id="exampleInputEmail"
-                                                aria-describedby="emailHelp" placeholder="Enter Email Address">
+                                                aria-describedby="emailHelp" placeholder="Enter Email Address"
+                                                formControlName="email">
                                         </div>
+
+                                        <div class="mb-3" *ngIf="campoNoValido('email')">
+                                            <span class="text-danger">El email es obligatorio y tiene que ser válido</span>
+                                        </div>
+
                                         <div class="form-group">
                                             <input type="password" class="form-control" id="exampleInputPassword"
-                                                placeholder="Password">
+                                                placeholder="Password" formControlName="password">
+
                                         </div>
+
+                                        <div class="mb-3" *ngIf="campoNoValido('password')">
+                                            <span class="text-danger">Este campo es obligatorio</span>
+                                        </div>
+
+
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small"
                                                 style="line-height: 1.5rem;">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck"
+                                                    formControlName="recordar">
+
                                                 <label class="custom-control-label" for="customCheck">Remember
                                                     Me</label>
                                             </div>
+
                                         </div>
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary btn-block">Login</button>
                                         </div>
                                         <hr>
-
-                                        <button type="submit" class="btn btn-google btn-block">Login with Google</button>
-                                        
+                                        <button type="submit" class="btn btn-google btn-block">Login with
+                                            Google</button>
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="font-weight-bold small" [routerLink]="['/registrar']"  >Crear una Cuenta!</a>
+                                        <a class="font-weight-bold small" [routerLink]="['/registrar']">Crear una </a>
                                     </div>
                                     <div class="text-center">
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

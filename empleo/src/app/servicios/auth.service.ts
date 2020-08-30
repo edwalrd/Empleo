@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
+
 import { HttpClient } from "@angular/common/http";
+
 import { Global } from "../servicios/global";
+
 import { Observable } from 'rxjs';
+
 import { tap, catchError } from 'rxjs/operators';
+
 import { registrar } from '../interfaces/registrar';
+
+import { login } from '../interfaces/login';
+
+
 
 
 
@@ -34,7 +43,20 @@ export class AuthService {
           this.guardarLocalStorage(resp.token, resp.usuario);
         })
       )
+  };
+
+  login(data: login): Observable<any> {
+
+    return this._http.post<any>(this.url + 'auth/login', data)
+    .pipe(
+      tap((resp: any) =>{
+
+      this.guardarLocalStorage(resp.token, resp.usuario);
+
+    }))
+
   }
+
 
 
 

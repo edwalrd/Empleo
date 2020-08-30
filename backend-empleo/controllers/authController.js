@@ -25,7 +25,7 @@ const controlador = {
 
             return res.status(400).send({
                 status: "error",
-                mesanje: "Faltan datos por enviar"
+                msg: "Faltan datos por enviar"
             });
         }
 
@@ -33,16 +33,16 @@ const controlador = {
 
             const emailExist = await Usuario.findOne({ email: params.email });
 
-            if (emailExist) return res.status(400).send({ mesanje: "Este usuario ya existe" });
+            if (emailExist) return res.status(400).send({ msg: "Este usuario ya existe" });
 
-            await Usuario.create(params, (err, usuario) => {
+            await Usuario.create(params, (error, usuario) => {
 
-                if (err || !usuario) {
+                if (error || !usuario) {
 
                     return res.status(400).send({
                         status: "error",
-                        mensaje: "Se ha producido un problema",
-                        destalle: err
+                        msg: "Se ha producido un problema",
+                        destalle: error
                     })
                 }
 
@@ -58,7 +58,7 @@ const controlador = {
 
         } else {
             return res.status(404).send({
-                mesanje: 'Los datos no son validos'
+                msg: 'Los datos no son validos'
             });
         }
 
@@ -76,26 +76,27 @@ const controlador = {
 
             return res.status(400).send({
                 status: "error",
-                mesanje: "Faltan datos por enviar"
+                msg: "Faltan datos por enviar"
             });
         }
         if (emailValidator && passwordValidator == true) {
 
 
-            const user = await Usuario.findOne({ email: params.email });
+            const usuario = await Usuario.findOne({ email: params.email });
 
-            if (!user) return res.status(400).send({ status: "error", mesanje: "Este usuario no existe" });
+            if (!usuario) return res.status(400).send({ status: "error", msg: "Este usuario no existe" });
 
-            const validPass = await user.comparaPassword(params.password);
+            const validPass = await usuario.comparaPassword(params.password);
 
-            if (!validPass) return res.status(400).send({ status: "error", mensanje: "Esta contrasena es incorrecta" });
+            if (!validPass) return res.status(400).send({ status: "error", msg: "Esta contrasena es incorrecta" });
 
-            const token = generarJWT(user._id);
+            const token = generarJWT(usuario._id);
 
             res.header('auth-token', token).send(
                 {
                     status: "OK",
-                    token
+                    token,
+                    usuario
                 }
             );
         }
@@ -147,7 +148,7 @@ const controlador = {
 
                     return res.status(400).send({
                         status:'error',
-                        mensaje: "se ha producido un error a guardar este usuario",
+                        msg: "se ha producido un error a guardar este usuario",
                         err
                     })
                 }
@@ -166,7 +167,7 @@ const controlador = {
             return await res.status(200).send({
 
                 status: "error",
-                mensaje: "Token no es correcto",
+                msg: "Token no es correcto",
                 error
             });
         }
