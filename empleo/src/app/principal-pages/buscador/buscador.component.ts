@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from "@angular/forms";
+import { provincias } from "../../modelo/provincias";
 
 @Component({
   selector: 'app-buscador',
@@ -7,9 +9,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BuscadorComponent implements OnInit {
 
-  constructor() { }
+
+  public num : Number;
+
+  constructor(private fb: FormBuilder) {
+
+  }
 
   ngOnInit(): void {
+
   }
+
+
+  contador() {
+
+  
+  }
+
+  buscador = this.fb.group({
+
+    palabra: ['', [Validators.required]],
+    area: ['', [Validators.required]],
+    anos: ['', [Validators.required]],
+    fecha: ['', [Validators.required]],
+    provincia: ['', [Validators.required]],
+
+  });
+
+
+
+
+
+
+
+
 
 }

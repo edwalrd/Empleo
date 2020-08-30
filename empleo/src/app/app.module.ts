@@ -9,7 +9,7 @@ import { PosterModule } from "./poster-templates/poster.module";
 import { AuthModuleModule } from "./auth/auth-module.module";
 import { PrincipalModule } from "./principal-pages/principal.module";
 import { AppRoutingModule } from "./app-routing.module";
-
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -22,7 +22,9 @@ import { AppRoutingModule } from "./app-routing.module";
     AppRoutingModule,
     PosterModule,
     AuthModuleModule,
-    PrincipalModule
+    PrincipalModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

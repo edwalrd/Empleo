@@ -9,30 +9,57 @@
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Register</h1>
                                 </div>
-                                <form>
+                                <form (submit)="guardar()" [formGroup]="registrar">
+
                                     <div class="form-group">
+
                                         <label>Nombre</label>
+
                                         <input type="text" class="form-control" id="exampleInputFirstName"
-                                            placeholder="Ingresa tu nombre">
+                                            placeholder="Ingresa tu nombre" formControlName="nombre">
                                     </div>
+
+                                    <div *ngIf="campoNoValido('nombre')">
+                                        <span class="text-danger">Este campo es obligatorio</span>
+                                    </div>
+
                                     <div class="form-group">
+
                                         <label>Apellido</label>
+
                                         <input type="text" class="form-control" id="exampleInputLastName"
-                                            placeholder="Ingresa tu apellido">
+                                            placeholder="Ingresa tu apellido" formControlName="apellido">
                                     </div>
+
+                                    <div *ngIf="campoNoValido('apellido')">
+                                        <span class="text-danger">Este campo es obligatorio</span>
+                                    </div>
+
                                     <div class="form-group">
+
                                         <label>Email</label>
+
                                         <input type="email" class="form-control" id="exampleInputEmail"
-                                            aria-describedby="emailHelp" placeholder="Ingresa el email">
+                                            aria-describedby="emailHelp" placeholder="Ingresa el email"
+                                            formControlName="email">
                                     </div>
+
+                                    <div *ngIf="campoNoValido('email')">
+                                        <span class="text-danger">El email es obligatorio y tiene que ser válido</span>
+                                    </div>
+
                                     <div class="form-group">
                                         <label>Contraseña </label>
                                         <input type="password" class="form-control" id="exampleInputPassword"
-                                            placeholder="Ingresa la contraseña">
+                                            placeholder="Ingresa la contraseña" formControlName="password">
                                     </div>
-                                   
+
+                                    <div *ngIf="campoNoValido('password')">
+                                        <span class="text-danger">El email es obligatorio y tiene que ser válido</span>
+                                    </div>
+
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                        <input type="submit"  [disabled]="registrar.invalid" class="btn btn-primary btn-block" value="Register">
                                     </div>
                                     <hr>
                                 </form>

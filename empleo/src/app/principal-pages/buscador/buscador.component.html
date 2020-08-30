@@ -1,1 +1,62 @@
-<p>buscador works!</p>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center mx-auto d-block" id="exampleModalLabel">Buscar</h5>
+
+            </div>
+            <div class="modal-body">
+
+                <!-- star form -->
+                <form>
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Profesion,Palabra clave o Empresa</label>
+                        <input type="text" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Area</label>
+                        <select class="form-control" id="recipient-name">
+                            <option>software</option>
+                            <option>contable</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Años experiencia</label>
+                        <select class="form-control" id="recipient-name">
+                            <option>{{num}}</option>
+                       
+
+
+                        </select>
+                    </div>
+
+                    <!-- <div *ngFor="let item of provincias" ><p>{{item}}</p></div> -->
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Fecha de Publicacion</label>
+                        <input type="date" class="form-control" id="recipient-name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Provincia</label>
+                        <select class="form-control" id="recipient-name">
+                         
+                        </select>
+                    </div>
+
+
+                </form>
+                
+                <!-- end form -->
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </div>
+</div>

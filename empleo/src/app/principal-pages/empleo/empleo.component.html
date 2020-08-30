@@ -26,19 +26,30 @@
 
     <div class="row ml-5">
 
-        <div class="col-sm-5 "><input class="form-control" type="text"></div>
-        <div class="col-sm-5"><input class="form-control" type="text"></div>
-        <div class="col-sm-2"><button class="btn btn-info">Buscar</button></div>
+        <div class="col-sm-5 mt-2"><input class="form-control" type="text"></div>
+        <div class="col-sm-5 mt-2"><input class="form-control" type="text"></div>
+        <div class="col-sm-2 mt-2"><button class="btn btn-info">Buscar</button></div>
     </div>
 
-    <div class="row mt-2 ml-5">
-        <a  [routerLink]="['/login']" routerLinkActive="router-link-active">Busqueda Avanzada</a>
+    <div class="row mt-3 ml-5">
+
+        <button type="button" class="btn btn-outline-light text-dark" data-toggle="modal" data-target="#exampleModal">
+            Busqueda Avanzada
+
+        </button>
     </div>
+
     <div class="row mt-2 ml-5">
         <p class="text-black"> 1,433 empleos publicados en Republica Dominicana</p>
     </div>
 
 </div>
+
+<!-- Cotenido del modal -->
+
+<app-buscador></app-buscador>
+
+
 <hr class="container-fluid">
 
 <div class="container">
