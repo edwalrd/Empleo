@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/servicios/auth.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert';
 
+declare const gapi: any;
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,8 @@ import swal from 'sweetalert';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  public auth2: any;
 
   constructor(
 
@@ -21,6 +24,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.renderButton();
   }
 
   loginData = this.fb.group({
@@ -48,7 +52,7 @@ export class LoginComponent implements OnInit {
       resp => {
 
         this._router.navigate(['/poster']);
-        
+
       }, err => {
 
         swal("Oh noes!", err.error.msg, "error");
@@ -59,7 +63,6 @@ export class LoginComponent implements OnInit {
 
 
   }
-
 
   campoNoValido(campo: string): boolean {
 
@@ -76,5 +79,74 @@ export class LoginComponent implements OnInit {
     }
 
   }
+
+
+  // google
+
+  startApp() {
+    gapi.load('auth2', () => {
+
+      this.auth2 = gapi.auth2.init({
+        client_id: '166181535522-a12co9b0e310ue7vr5qfkgjtgbrgh5fh.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+
+      });
+
+      this.attachSignin(document.getElementById('my-signin2'));
+    });
+  };
+
+  attachSignin(element) {
+
+
+
+    this.auth2.attachClickHandler(element, {},
+      (googleUser) => {
+
+        const id_token = googleUser.getAuthResponse().id_token;
+
+        console.log(id_token);
+
+        this._service.loginGoogle(id_token)
+          .subscribe(
+
+            reps => {
+
+              this._router.navigate(['/poster']);
+
+            })
+
+
+      }, (error) => {
+        alert(JSON.stringify(error, undefined, 2));
+      });
+  }
+
+
+  renderButton() {
+    gapi.signin2.render('my-signin2', {
+      'scope': 'profile email',
+      'width': 240,
+      'height': 50,
+      'longtitle': true,
+      'theme': 'dark'
+    });
+
+    this.startApp();
+  }
+
+
+
+
 }
 
+
+// onSuccess(googleUser) {
+//   console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+//   var id_token = googleUser.getAuthResponse().id_token;
+//   console.log(id_token);
+
+// }
+//  onFailure(error) {
+//   console.log(error);
+// }

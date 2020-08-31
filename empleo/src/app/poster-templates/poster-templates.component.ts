@@ -12,4 +12,6 @@ export class PosterPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+ 
+
 }

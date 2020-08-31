@@ -7,10 +7,13 @@ import { EditarComponent } from './plantilla/pages/publicacion/editar/editar.com
 import { EliminarComponent } from './plantilla/pages/publicacion/eliminar/eliminar.component';
 import { SobreNosotrosComponent } from './plantilla/pages/sobre-nosotros/sobre-nosotros.component';
 
+import { AuthGuard } from "../guards/auth.guard";
+
 const routes: Routes = [
 
   {path: 'poster' , 
   component: PosterPageComponent,
+  canActivate: [AuthGuard],
 
   children: [
     {path: '' , component: DashboardComponent },

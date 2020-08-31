@@ -33,7 +33,7 @@ const controlador = {
 
             const emailExist = await Usuario.findOne({ email: params.email });
 
-            if (emailExist) return res.status(400).send({ msg: "Este usuario ya existe" });
+            if (emailExist) return res.status(400).send({ mesanje: "Este usuario ya existe" });
 
             await Usuario.create(params, (error, usuario) => {
 
@@ -95,8 +95,7 @@ const controlador = {
             res.header('auth-token', token).send(
                 {
                     status: "OK",
-                    token,
-                    usuario
+                    token
                 }
             );
         }
@@ -124,38 +123,45 @@ const controlador = {
         try {
             const { name, email, picture } = await googleVerify(token);
 
-            const usuarios = await Usuario.findOne({ email });
+            const usuariosdb = await Usuario.findOne({ email });
+
             let usuario;
 
-            if (!usuarios) {
+            if (!usuariosdb) {
 
-                usuario = new User({
+                usuario = new Usuario({
 
-                    email: email,
+                    nombre: name,
+                    apellido: name,
+                    email,
                     password: "123",
                     google: true
 
                 });
             } else {
 
-                usuario = usuarios;
+                usuario = usuariosdb;
+
                 usuario.google = true;
             }
 
-            const newuser =  Usuario.create(usuario,async (err, user) => {
+           await Usuario.create(usuario ,async (err, user) => {
 
                 if(err || !user){
 
                     return res.status(400).send({
                         status:'error',
-                        msg: "se ha producido un error a guardar este usuario",
+                        mensaje: "se ha producido un error a guardar este usuario",
                         err
                     })
                 }
 
+                const token = generarJWT(usuario._id);
+
                 return await res.status(200).send({
 
                     status: "OK",
+                    token,
                     user,
                 });
 
