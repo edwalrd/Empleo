@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from 'src/app/servicios/auth.service';
 import { Router } from '@angular/router';
@@ -19,7 +19,8 @@ export class LoginComponent implements OnInit {
 
     private fb: FormBuilder,
     private _service: AuthService,
-    private _router: Router
+    private _router: Router,
+    private ngZone: NgZone
 
   ) { }
 
@@ -83,39 +84,33 @@ export class LoginComponent implements OnInit {
 
   // google
 
-  startApp() {
-    gapi.load('auth2', () => {
+  async startApp() {
 
-      this.auth2 = gapi.auth2.init({
-        client_id: '166181535522-a12co9b0e310ue7vr5qfkgjtgbrgh5fh.apps.googleusercontent.com',
-        cookiepolicy: 'single_host_origin',
+    await this._service.googleinit();
+    this.auth2 = this._service.auth2;
 
-      });
+    this.attachSignin(document.getElementById('my-signin2'));
 
-      this.attachSignin(document.getElementById('my-signin2'));
-    });
   };
 
   attachSignin(element) {
-
-
 
     this.auth2.attachClickHandler(element, {},
       (googleUser) => {
 
         const id_token = googleUser.getAuthResponse().id_token;
 
-        console.log(id_token);
-
         this._service.loginGoogle(id_token)
           .subscribe(
 
             reps => {
 
-              this._router.navigate(['/poster']);
+              this.ngZone.run(() => {
+
+                this._router.navigate(['/poster']);
+              });
 
             })
-
 
       }, (error) => {
         alert(JSON.stringify(error, undefined, 2));
@@ -137,16 +132,4 @@ export class LoginComponent implements OnInit {
 
 
 
-
 }
-
-
-// onSuccess(googleUser) {
-//   console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-//   var id_token = googleUser.getAuthResponse().id_token;
-//   console.log(id_token);
-
-// }
-//  onFailure(error) {
-//   console.log(error);
-// }

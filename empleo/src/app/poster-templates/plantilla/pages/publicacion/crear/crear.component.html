@@ -3,63 +3,356 @@
   <hr>
   <div class="card">
     <div class="card-body">
-      <form action="">
-        <div class="form-row align-items-center">
-          <div class="col-sm sepatator">
-            <label for="Company">Company:</label>
-            <input type="text" class="form-control mb-2" id="Company" placeholder="Company">
+
+      <form (submit)="crear()" [formGroup]="puestoform" action="">
+
+        <div class="">
+          <h5 class="text-center">Datos de la compañía</h5>
+
+          <hr>
+
+          <div class="form-row align-items-center">
+            <div class="col-sm sepatator">
+
+              <label for="Company">Compañía:</label>
+
+              <input type="text" class="form-control mb-2" id="Company" placeholder="compañía"
+                formControlName="companía">
+            </div>
+
+
+
+            <div class="col-sm sepatator">
+              <label for="Position">Ubicacion</label>
+              <input type="text" class="form-control mb-2" id="Position" placeholder="Ubicacion"
+                formControlName="ubicacion">
+            </div>
           </div>
-          <div class="col-sm sepatator">
-            <label for="Position">Position:</label>
-            <input type="text" class="form-control mb-2" id="Position" placeholder="Position">
+
+          <div class="mb-3" *ngIf="campoNoValido('companía')">
+            <span class="text-danger ">Este campo es obligatorio</span>
+          </div>
+
+          <div class="form-row align-items-center">
+
+            <div class="col-sm sepatator">
+              <label for="Url">Pagina web:</label>
+              <input type="text" class="form-control mb-2" id="Url" placeholder="Url Company"
+                formControlName="paginaweb">
+            </div>
+
+            <div class="col-sm sepatator">
+              <label for="Url">Logo:</label>
+              <input type="file" class="form-control-file mb-2" id="Url" formControlName="logo">
+            </div>
+
+          </div>
+
+          <div class="form-row align-items-center">
+
+            <div class="col-sm sepatator">
+              <label for="Location">Actividad:</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
+                formControlName="actividad"></textarea>
+            </div>
+
+            <div class="col-sm sepatator">
+              <label for="horario">Horario:</label>
+              <input type="text" class="form-control mb-2" id="horario" placeholder="Horario" formControlName="horario">
+            </div>
+
+
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm ">
+              <div class="mb-3" *ngIf="campoNoValido('actividad') ">
+                <span class="text-danger  ">Este campo es obligatorio</span>
+              </div>
+            </div>
+
+            <div class="col-sm ">
+              <div class="mb-5" *ngIf="campoNoValido('horario') ">
+                <span class="text-danger  ">Este campo es obligatorio</span>
+              </div>
+            </div>
+
+
+          </div>
+
+
+
+
+
+        </div>
+        <hr>
+
+        <div>
+
+          <h5 class="text-center">Descripción del Puesto</h5>
+
+          <br>
+
+          <div class="form-row align-items-center">
+
+            <div class="col-sm sepatator">
+              <label for="Position">Nombre del Puesto:</label>
+              <input type="text" class="form-control mb-2" id="Position" placeholder="Nombre" formControlName="nombre">
+            </div>
+
+            <div class="col-sm sepatator">
+              <label for="Category">Area principal:</label>
+
+              <select id="Category" class="form-control mb-2" formControlName="area">
+
+                <option *ngFor="let item of areas " [ngvalue]="item.value">
+                  {{item.viewValue}}
+                </option>
+
+              </select>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-sm mb-3" *ngIf="campoNoValido('nombre')">
+              <span class="text-danger ">Este campo es obligatorio</span>
+            </div>
+          </div>
+
+
+          <div class="col-sm-5">
+
+            <label for="vacante">Numero de vacante:</label>
+            <select class="form-control" id="vacante" formControlName='vacante'>
+
+              <option *ngFor="let item of num" [ngvalue]="item.numvalue">
+                {{item.num}}</option>
+
+            </select>
+
+          </div>
+
+          <div class="align-items-center mt-3">
+            <div class="sepatator">
+              <label for="Description">Descripcion:</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" formControlName="descripcion"
+                formControlName="descripcion"></textarea>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm mb-3" *ngIf="campoNoValido('descripcion')">
+              <span class="text-danger ">Este campo es obligatorio</span>
+            </div>
+          </div>
+
+        </div>
+
+
+        <hr>
+
+        <h5 class="text-center">Requisitos del puesto</h5>
+
+        <div class="align-items-center">
+          <div class="sepatator">
+            <label for="Description">Requisitos:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"
+              formControlName="requisito"></textarea>
           </div>
         </div>
 
+        <div class="row">
+          <div class="col-sm mb-3" *ngIf="campoNoValido('requisito')">
+            <span class="text-danger ">Este campo es obligatorio</span>
+          </div>
+        </div>
+
+        <hr>
         <div class="form-row align-items-center">
+
           <div class="col-sm sepatator">
-            <label for="Category">Category:</label>
-            <select id="Category" class="form-control mb-2">
-              <option selected>Choose...</option>
+            <label for="cantida">Nivel académico:</label>
+            <select class="form-control" formControlName='academico' id="cantida">
+
+              <option *ngFor="let item of academico" [ngvalue]="item.viewValue">
+                {{item.value}}</option>
+
             </select>
           </div>
+
           <div class="col-sm sepatator">
-            <label for="Url">Url Company:</label>
-            <input type="text" class="form-control mb-2" id="Url" placeholder="Url Company">
+
+            <label for="Horario">Años experiencia:</label>
+
+            <br>
+
+            <div class="form-check form-check-inline">
+
+              <input formControlName="experiencia" value="0" name="experiencia" class="form-check-input" type="radio"
+                id="inlineRadio1" >
+
+              <label class="form-check-label" for="inlineRadio1">0</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+
+              <input class="form-check-input" type="radio" id="inlineRadio2" formControlName="experiencia" value="1"
+                name="experiencia">
+
+              <label class="form-check-label" for="inlineRadio2">1</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio"  id="inlineRadio2" formControlName="experiencia" value="2"
+                name="experiencia" >
+
+              <label class="form-check-label" for="inlineRadio2">2+</label>
+            </div>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="inlineRadio2" id="inlineRadio2"
+                formControlName="experiencia" value="5" name="experiencia">
+
+              <label class="form-check-label" for="inlineRadio2">5+</label>
+            </div>
+
+
+
           </div>
         </div>
 
         <div class="form-row align-items-center">
+
           <div class="col-sm sepatator">
-            <label for="Location">Location:</label>
-            <input type="text" class="form-control mb-2" id="Location" placeholder="Location">
+            <label for="cantida">Rago de edad:</label>
+            <select class="form-control" id="cantida" formControlName="edad">
+
+              <option *ngFor="let item of edad" [ngvalue]="item.viewValue">
+                {{item.value}}</option>
+
+            </select>
           </div>
+
           <div class="col-sm sepatator">
-            <label for="Url">Logo:</label>
-            <input type="file" class="form-control-file mb-2" id="Url">
+
+            <label for="Horario">Sexo :</label>
+
+            <br>
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="sexo" id="inlineRadio1" value="hombre"
+                formControlName="sexo">
+              <label class="form-check-label" for="inlineRadio1">Hombre</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="sexo" id="inlineRadio2" value="mujer"
+                formControlName="sexo">
+              <label class="form-check-label" for="inlineRadio2">Mujer</label>
+            </div>
+
           </div>
         </div>
-        <div class="align-items-center">
-          <div class="sepatator">
-            <label for="Description">Description:</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
+
+        <hr>
+        <h5 class="text-center">Jornada y Salario</h5>
+
+        <label for="Horario">Tipo de Contrato:</label>
+
+        <br>
+
+        <div class="form-check form-check-inline">
+
+          <input class="form-check-input" type="radio" name="contrato" id="inlineRadio1" value="fijo"
+            formControlName="contrato">
+          <label class="form-check-label" for="inlineRadio1">Fijo</label>
+
         </div>
-        <div class="align-items-center">
-          <div class="sepatator">
-            <label class="pt-0">Type:</label>
-            <div class="col-sm-10">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                <label class="form-check-label" for="gridRadios1">
-                  First radio
-                </label>
-              </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="contrato" id="inlineRadio2" value="Pasantía"
+            formControlName="contrato">
+          <label class="form-check-label" for="inlineRadio2">Pasantía</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+
+          <input class="form-check-input" type="radio" name="contrato" id="inlineRadio2" value="Temporal"
+            formControlName="contrato">
+          <label class="form-check-label" for="inlineRadio2">Temporal</label>
+        </div>
+
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" name="contrato" id="inlineRadio2" value="Proyecto"
+            formControlName="contrato">
+          <label class="form-check-label" for="inlineRadio2">Proyecto</label>
+        </div>
+
+        <div class="form-row align-items-center mt-2">
+
+
+          <div class="col-sm sepatator ">
+            <label for="Horario">Salario:</label>
+            <input type="text" class="form-control mb-2" id="Salario" placeholder="Salario" formControlName="salario">
+          </div>
+
+          <div class="col-sm sepatator">
+            <label for="Horario">Modalidad:</label>
+            <select class="form-control" id="Modalidad" formControlName="modalidad">
+
+              <option *ngFor="let item of modalidad" [ngvalue]="item.viewValue">
+                {{item.value}}</option>
+
+            </select>
+          </div>
+
+        </div>
+
+        <div class="row">
+
+
+          <div class="mb-3 col-sm " *ngIf="campoNoValido('salario')">
+            <span class="text-danger ">Este campo es obligatorio</span>
+          </div>
+
+        </div>
+
+        <div class="form-row align-items-center">
+
+
+          <div class="col-sm sepatator ">
+            <label for="Jornada">Jornada:</label>
+            <input type="text" class="form-control mb-2" id="Jornada" placeholder="Jornada" formControlName="jornada">
+          </div>
+
+          <div class="col-sm sepatator">
+            <label for="Horario">Horario:</label>
+            <input type="text" class="form-control mb-2" id="Horario" placeholder="Horario" formControlName="horarioT">
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-sm">
+
+            <div class="mb-3 " *ngIf="campoNoValido('jornada')">
+              <span class="text-danger ">Este campo es obligatorio</span>
+            </div>
+          </div>
+
+          <div class="col-sm">
+
+            <div class="mb-3 " *ngIf="campoNoValido('horarioT')">
+              <span class="text-danger ">Este campo es obligatorio</span>
             </div>
           </div>
         </div>
+
         <div class="card-footer bg-transparent">
-            <input type="submit" class="btn btn-outline-primary btn-block" value="Guardar">
+          <input type="submit" class="btn btn-primary btn-block" disabled="puestoform.invalid" value="Guardar">
         </div>
+
       </form>
     </div>
   </div>

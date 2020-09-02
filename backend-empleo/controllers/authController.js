@@ -108,10 +108,13 @@ const controlador = {
 
         const token = generarJWT(id);
 
+        const usuario = await Usuario.findById(id);
+
         return res.status(200).send({
 
             status: "OK",
-            token
+            token,
+            usuario
         })
 
     },
@@ -127,12 +130,19 @@ const controlador = {
 
             let usuario;
 
+            let separar = name.split(" ");
+
+            let nombre = separar[0];
+
+            let apellido = separar[1];
+
+
             if (!usuariosdb) {
 
                 usuario = new Usuario({
 
-                    nombre: name,
-                    apellido: name,
+                    nombre: nombre,
+                    apellido: apellido,
                     email,
                     password: "123",
                     google: true

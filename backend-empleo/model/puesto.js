@@ -2,46 +2,60 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const puestoSchema = new Schema({
-    ubicacion:{
-        type:String,
-        required:true
+
+    companía: {
+
+        type: String,
+        required: true
     },
-    posicion:{
-        type:String,
-        required:true
+    ubicacion: {
+
+        type: String
     },
-    empresa:{
-        type:String,
-        required:true
+    paginaweb: {
+
+        type: String
     },
-    logo:{
-        type:String
+    actividad: {
+
+        type: String,
+        required: true
     },
-    tipo:{
-        type:String,
-        required:true
+    logo: {
+
+        type: String
     },
-    url:{
-        type:String
+    horario: {
+
+        type: String
     },
-    categorias:{
-        type:String,
-        required:true
+    academico: {
+
+        type: String,
+        required: true
     },
-    descripcion:{
-        type:String,
-        required:true
+    experencia: {
+
+        type: String,
+        required: true
     },
-    aplicar:{
-        type:String,
-        required:true
+    ragonedad: {
+
+        type: String,
+        required: true
     },
-    email:{
-        type:String,
-        required:true
+    sexo : {
+        
+        type: String,
+        enum: ['hombre', 'mujer']
     }
+
+
+
+
+
 });
 
-const puesto = mongoose.model('Puestos',puestoSchema);
+const puesto = mongoose.model('Puestos', puestoSchema);
 
 module.exports = puesto;

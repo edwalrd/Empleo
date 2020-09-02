@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Componentes
 import { PosterPageComponent } from './poster-templates.component';
@@ -11,9 +12,10 @@ import { HeaderComponent } from './plantilla/header/header.component';
 
 import { DashboardComponent } from './plantilla/pages/dashboard/dashboard.component';
 import { CrearComponent } from './plantilla/pages/publicacion/crear/crear.component';
-import { EditarComponent } from './plantilla/pages/publicacion/editar/editar.component';
-import { EliminarComponent } from './plantilla/pages/publicacion/eliminar/eliminar.component';
 import { SobreNosotrosComponent } from './plantilla/pages/sobre-nosotros/sobre-nosotros.component';
+import { MipublicacionesComponent } from './plantilla/pages/publicacion/mipublicaciones/mipublicaciones.component';
+
+
 
 @NgModule({
 
@@ -22,12 +24,11 @@ import { SobreNosotrosComponent } from './plantilla/pages/sobre-nosotros/sobre-n
     HeaderComponent,
     MenuComponent,
     FooterComponent,
-
+    
     DashboardComponent,
     CrearComponent,
-    EditarComponent,
-    EliminarComponent,
-    SobreNosotrosComponent
+    SobreNosotrosComponent,
+    MipublicacionesComponent,
 
   ],
 
@@ -39,14 +40,15 @@ import { SobreNosotrosComponent } from './plantilla/pages/sobre-nosotros/sobre-n
 
     DashboardComponent,
     CrearComponent,
-    EditarComponent,
-    EliminarComponent,
+    MipublicacionesComponent,
     SobreNosotrosComponent
   ],
 
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule, 
+    ReactiveFormsModule
   ]
 
 })

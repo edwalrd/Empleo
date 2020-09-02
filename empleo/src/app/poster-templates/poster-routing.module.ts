@@ -3,11 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { PosterPageComponent } from "./poster-templates.component";
 import { DashboardComponent } from './plantilla/pages/dashboard/dashboard.component';
 import { CrearComponent } from './plantilla/pages/publicacion/crear/crear.component';
-import { EditarComponent } from './plantilla/pages/publicacion/editar/editar.component';
-import { EliminarComponent } from './plantilla/pages/publicacion/eliminar/eliminar.component';
 import { SobreNosotrosComponent } from './plantilla/pages/sobre-nosotros/sobre-nosotros.component';
 
 import { AuthGuard } from "../guards/auth.guard";
+import { MipublicacionesComponent } from './plantilla/pages/publicacion/mipublicaciones/mipublicaciones.component';
 
 const routes: Routes = [
 
@@ -19,12 +18,10 @@ const routes: Routes = [
     {path: '' , component: DashboardComponent },
     {path: 'dashboard' , component: DashboardComponent},
     {path: 'publicacion/crear' , component: CrearComponent},
-    {path: 'publicacion/editar' , component: EditarComponent},
-    {path: 'publicacion/eliminar' , component: EliminarComponent},
+    {path: 'publicacion/mipublicaciones' , component: MipublicacionesComponent},
     {path: 'nosotro' , component: SobreNosotrosComponent},
 
 
-    
   ]
 }
 ]; 

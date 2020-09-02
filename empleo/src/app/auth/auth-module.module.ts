@@ -14,8 +14,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule
   ]
 })
+
 export class AuthModuleModule { }

@@ -62,5 +62,6 @@ usuarioSchema.methods.comparaPassword = async function (password) {
 
 }
 
+
 module.exports = model("Usuario", usuarioSchema);
 
