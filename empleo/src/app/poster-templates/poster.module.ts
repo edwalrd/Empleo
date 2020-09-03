@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 // Componentes
 import { PosterPageComponent } from './poster-templates.component';
@@ -48,7 +49,8 @@ import { MipublicacionesComponent } from './plantilla/pages/publicacion/mipublic
     CommonModule,
     RouterModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 
 })

@@ -3,3 +3,10 @@
     margin-right: 25px;
     margin-bottom: 5px;
 }
+
+
+.borde{
+
+   border-left-color: green;
+   border-width: 2px;
+}

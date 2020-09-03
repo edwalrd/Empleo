@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const puestoSchema = new Schema({
 
-    companía: {
+    empresa: {
 
         type: String,
         required: true
@@ -29,29 +29,90 @@ const puestoSchema = new Schema({
 
         type: String
     },
+    nombre: {
+
+        type: String
+    },
+    area: {
+
+    },
+    vacante: {
+
+        type: Number
+    },
+    descripcion: {
+
+        type: String,
+        required: true
+    },
+    requisito: {
+
+        type: String,
+        required: true
+
+    },
     academico: {
 
+        type: String
+
+    },
+    academico: {
+
+        type: String
+
+    },
+    experiencia: {
+
         type: String,
         required: true
+
     },
-    experencia: {
+    edad: {
+
+        type: String
+
+    },
+    sexo: {
+
+        type: String,
+        required: true
+
+    },
+
+    contrato: {
 
         type: String,
         required: true
     },
-    ragonedad: {
+
+    salario: {
+
+        type: String,
+        default: 'En entrevista'
+    },
+
+    modalidad: {
+
+        type: String
+
+    },
+
+    jornada: {
+
+        type: String,
+        required: true
+
+    },
+
+    horarioT: {
 
         type: String,
         required: true
     },
-    sexo : {
-        
-        type: String,
-        enum: ['hombre', 'mujer']
+    fecha: {
+        type: Date,
+        default: Date.now()
     }
-
-
-
 
 
 });

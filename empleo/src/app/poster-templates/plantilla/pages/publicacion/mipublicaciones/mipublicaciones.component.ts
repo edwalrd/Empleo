@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { PublicacionService } from 'src/app/servicios/publicacion.service';
+
+import {Puesto } from "../../../../../modelo/puesto";
+
 
 @Component({
   selector: 'app-mipublicaciones',
@@ -7,9 +11,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MipublicacionesComponent implements OnInit {
 
-  constructor() { }
+  public data : Puesto[];
+
+  public paginaActual: number = 1;
+
+  constructor(
+
+    private _services: PublicacionService
+
+  ) { }
 
   ngOnInit(): void {
+
+    console.log(this._services.TodoPuesto().subscribe(
+
+      resp => {
+
+        this.data = resp.puesto;
+        console.log( this.data);
+
+      },
+      error =>{
+        console.log(error);
+        
+      }
+
+
+    ));
+
   }
 
 }

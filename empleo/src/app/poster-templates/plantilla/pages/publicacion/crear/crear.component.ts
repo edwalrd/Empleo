@@ -3,6 +3,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { Select, Selectnum } from '../../../../../interfaces/select';
 
+import { PublicacionService } from "../../../../../servicios/publicacion.service";
+
+import swal from 'sweetalert';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear',
@@ -14,67 +18,15 @@ export class CrearComponent implements OnInit {
 
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private _service: PublicacionService,
+    private router: Router
 
   ) { }
 
   ngOnInit(): void {
 
-  
   }
-
-  public puestoform = this.fb.group({
-
-    companía: ['', Validators.required],
-    ubicacion: [''],
-    paginaweb: [''],
-    actividad: ['', Validators.required],
-    logo: [''],
-    horario: ['', Validators.required],
-
-    nombre: ['', Validators.required],
-    area: ['', Validators.required],
-    vacante: ['', Validators.required],
-    descripcion: ['', Validators.required],
-
-    requisito: ['', Validators.required],
-    academico: ['', Validators.required],
-    experiencia: ['', Validators.required],
-    edad: ['' , Validators.required],
-    sexo: ['' , Validators.required],
-    contrato: ['' , Validators.required],
-    salario: ['' , Validators.required],
-    modalidad: ['' , Validators.required],
-    jornada: ['' , Validators.required],
-    horarioT: ['' , Validators.required]
-
-  })
-
-
-  crear() {
-    
-
-    console.log(this.puestoform.value);
-
-  }
-
-  campoNoValido(campo): boolean{
-
-    const validaciones = [
-      this.puestoform.get(campo).invalid,
-      this.puestoform.get(campo).dirty,
-      this.puestoform.get(campo).touched,
-    ]
-
-    if (validaciones[0] && (validaciones[1] || validaciones[2]) && this.puestoform) {
-      return true;
-    } else {
-      return false;
-    }
-
-
-  }
-
 
   academico: Select[] = [
     { value: 'Bachillerato', viewValue: 'Bachillerato' },
@@ -86,37 +38,37 @@ export class CrearComponent implements OnInit {
     { value: 'grado', viewValue: 'grado' },
   ];
 
-  num: Selectnum[]=[
+  num: Selectnum[] = [
 
-    {num: 1 , numvalue: 1},
-    {num: 2 , numvalue: 2},
-    {num: 3 , numvalue: 3},
-    {num: 4 , numvalue: 4},
-    {num: 5 , numvalue: 5},
-    {num: 6 , numvalue: 6},
-    {num: 7 , numvalue: 7},
-    {num: 8 , numvalue: 8},
-    {num: 9 , numvalue: 9},
-    {num: 10 , numvalue: 10}
+    { num: 1, numvalue: 1 },
+    { num: 2, numvalue: 2 },
+    { num: 3, numvalue: 3 },
+    { num: 4, numvalue: 4 },
+    { num: 5, numvalue: 5 },
+    { num: 6, numvalue: 6 },
+    { num: 7, numvalue: 7 },
+    { num: 8, numvalue: 8 },
+    { num: 9, numvalue: 9 },
+    { num: 10, numvalue: 10 }
   ];
 
 
-  edad: Select[] = [
+  public edad: Select[] = [
     { value: '18-25', viewValue: '18-25' },
     { value: '25-45', viewValue: '25-45' },
     { value: '45-60', viewValue: '45-60' }
 
-  ] 
-  
+  ]
+
   modalidad: Select[] = [
     { value: 'Precencial', viewValue: 'Precencial' },
     { value: 'Semi Presencial', viewValue: 'Semi Presencial' },
     { value: 'Virtual', viewValue: 'Virtual' },
   ]
 
- 
 
-  areas: Select[] = [
+
+  public areas: Select[] = [
     { value: 'Administración', viewValue: 'Administración' },
     { value: 'Aeronáutica', viewValue: 'Aeronáutica' },
     { value: 'Agrimensura', viewValue: 'Agrimensura' },
@@ -187,6 +139,79 @@ export class CrearComponent implements OnInit {
   ];
 
 
+  public puestoform = this.fb.group({
+
+    empresa: ['', Validators.required],
+    ubicacion: [''],
+    paginaweb: [''],
+    actividad: ['', Validators.required],
+    logo: [''],
+    horario: ['', Validators.required],
+
+    nombre: ['', Validators.required],
+    area: [this.areas[0].value],
+    vacante: [this.num[0].numvalue],
+    descripcion: ['', Validators.required],
+
+    requisito: ['', Validators.required],
+    academico: [this.academico[0].value],
+    experiencia: [''],
+    edad: [this.edad[0].value],
+    sexo: [''],
+    contrato: [''],
+    salario: [''],
+    modalidad: [this.modalidad[0].value],
+    jornada: ['', Validators.required],
+    horarioT: ['', Validators.required]
+
+  });
+
+
+
+  campoNoValido(campo): boolean {
+
+    const validaciones = [
+      this.puestoform.get(campo).invalid,
+      this.puestoform.get(campo).dirty,
+      this.puestoform.get(campo).touched,
+    ]
+
+    if (validaciones[0] && (validaciones[1] || validaciones[2]) && this.puestoform) {
+      return true;
+    } else {
+      return false;
+    }
+
+
+  }
+
+  crear() {
+
+    this._service.Crear(this.puestoform.value).subscribe(
+
+      reps => {
+
+        if (reps.status = "OK") {
+
+          swal("Good job!", "Se ha guardado correctamente", "success");
+
+          this.router.navigate(['poster/publicacion/mipublicaciones']);
+          
+        }
+        else {
+          swal("Good job!", "Ha occurrido un error ha guardar la publicacion", "error");
+        }
+      },
+      error => {
+
+        swal("Good job!", "Ha occurrido un error" , "error");
+
+        
+      }
+
+    )
+
+  }
 
 
 }

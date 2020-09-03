@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
-import { provincias } from "../../modelo/provincias";
+
 
 @Component({
   selector: 'app-buscador',
