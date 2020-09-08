@@ -1,4 +1,4 @@
-<h4 class="text-center">Mi publicaciones</h4>
+<h4 class="text-center">Mis publicaciones</h4>
 
 
 <hr>
@@ -8,60 +8,68 @@
 
     <div class="row">
 
-        <div class="col-md-3 mt-3">
+        <div class="col-md-3 mt-3 shadow-sm bg-white">
 
 
-            <label for="Puesto">Nombre del Puesto</label>
+            <div class="mt-5">
 
-            <input class="form-control" id="Puesto" type="text" placeholder="Nombre del Puesto">
+                <label for="Puesto">Nombre del Puesto</label>
 
-            <hr>
+                <input class="form-control" id="Puesto" type="text" placeholder="Nombre del Puesto">
 
-            <h6>Ordenar por</h6>
+                <hr>
 
-            <div class="row ">
+                <h6>Ordenar por</h6>
+
+                <div class="row ">
+                    <ul>
+                        <li>fecha</li>
+                        <li>salario</li>
+                        <li>Años experiencia</li>
+                    </ul>
+                </div>
+
+                <hr>
+
+
+
+                <h6>Tipo de Contrato</h6>
+
                 <ul>
-                    <li>fecha</li>
-                    <li>salario</li>
-                    <li>Años experiencia</li>
+                    <li>Fijo </li>
+                    <li>Pasantía </li>
+                    <li>Temporal </li>
+                    <li>Proyecto </li>
+
                 </ul>
+
+                <h6>Empresa</h6>
+
+                <ul>
+                    <li>alofoke radio</li>
+                    <li>mundord tv</li>
+                    <li>julio en la calle</li>
+
+                </ul>
+
             </div>
-
-            <hr>
-
-
-
-            <h6>Tipo de Contrato</h6>
-
-            <ul>
-                <li>Fijo </li>
-                <li>Pasantía </li>
-                <li>Temporal </li>
-                <li>Proyecto </li>
-
-            </ul>
-
-            <h6>Empresa</h6>
-
-            <ul>
-                <li>alofoke radio</li>
-                <li>mundord tv</li>
-                <li>julio en la calle</li>
-
-            </ul>
 
         </div>
 
 
         <div class="col-md-8 ml-md-5 ">
 
-            <div *ngFor="let item of data | paginate: { itemsPerPage: 10, currentPage: paginaActual }; let i = index " class="mt-4">
+            <div *ngFor="let item of data | paginate: { itemsPerPage: 5, currentPage: paginaActual }; let i = index "
+                class="mt-4">
 
                 <hr>
+           
+                <a [routerLink]="['/poster/publicacion/detalle', item._id]" routerLinkActive="router-link-active" >
 
-                <div class="row">
-                    <h5>{{item.nombre}}</h5>
-                </div>
+                    <div class="row">
+                        <h5>{{item.nombre}}</h5>
+                    </div>
+                </a>
 
                 <div class="row">
                     <p>{{item.empresa}}</p>
@@ -69,31 +77,35 @@
 
                 <div class="row">
 
-                    <p>Angular es un framework para aplicaciones web desarrollado en TypeScript,
-                        de código abierto, mantenido por Google,
-                        que se utiliza para crear y mantener aplicaciones web de una sola página.</p>
+                    <p>{{item.descripcion}}</p>
                 </div>
 
-                    <div class="row mt-2"> 
+                <div class="row mt-2">
 
-                        <div class="col-sm">Fecha</div>
-                        <div class="col-sm">Tipo de contrato</div>
-                        <div class="col-sm">Salario</div>
-                        <div class="col-sm">Jornada</div>
+                    <div class="col-sm-2">{{item.fecha}}</div>
+                    <div class="col-sm-2">{{item.contrato}}</div>
+                    <div class="col-sm-2">{{item.salario}}</div>
+                    <div class="col-sm-2">{{item.jornada}}</div>
 
-                    </div>
 
-                 
+                </div>
+
+                
+            </div>
+
+            <hr>
+
+            <div class="row">
+
+                <pagination-controls class="mx-auto d-block" (pageChange)="paginaActual = $event"></pagination-controls>
 
             </div>
 
-        
 
-            <pagination-controls (pageChange)="paginaActual = $event"></pagination-controls>
 
 
         </div>
-<!-- 
+        <!-- 
         ////////////// -->
 
     </div>

@@ -11,6 +11,8 @@ import { PrincipalModule } from "./principal-pages/principal.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MomentModule } from 'angular2-moment';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PrincipalModule,
     HttpClientModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MomentModule
     
   ],
   providers: [],

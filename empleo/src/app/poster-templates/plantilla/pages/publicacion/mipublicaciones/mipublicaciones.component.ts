@@ -28,7 +28,6 @@ export class MipublicacionesComponent implements OnInit {
       resp => {
 
         this.data = resp.puesto;
-        console.log( this.data);
 
       },
       error =>{

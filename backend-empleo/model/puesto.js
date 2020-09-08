@@ -56,11 +56,7 @@ const puestoSchema = new Schema({
         type: String
 
     },
-    academico: {
-
-        type: String
-
-    },
+   
     experiencia: {
 
         type: String,

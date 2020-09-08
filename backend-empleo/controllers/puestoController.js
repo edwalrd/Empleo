@@ -38,8 +38,10 @@ const puestoController = {
   },
 
 
-  getPuesto: (req, res) => {
+  getOnePuesto: (req, res) => {
+
     const { id } = req.params;
+
     if (!id || id == null) {
       return res.status(500).send({
         message: "Error",
@@ -47,14 +49,19 @@ const puestoController = {
     }
 
     Puesto.findById(id, (error, puesto) => {
+
       if (error || !puesto) {
+
         return res.status(500).send({
+
           message: "Error"
         })
       }
 
-      return res.status(202).send({
-        puesto: puesto
+      return res.status(200).send({
+
+        status: "OK",
+        puesto
       })
     })
 

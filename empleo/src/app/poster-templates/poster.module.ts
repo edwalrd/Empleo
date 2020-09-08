@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { MomentModule } from 'angular2-moment'; 
 
 // Componentes
 import { PosterPageComponent } from './poster-templates.component';
@@ -15,6 +16,7 @@ import { DashboardComponent } from './plantilla/pages/dashboard/dashboard.compon
 import { CrearComponent } from './plantilla/pages/publicacion/crear/crear.component';
 import { SobreNosotrosComponent } from './plantilla/pages/sobre-nosotros/sobre-nosotros.component';
 import { MipublicacionesComponent } from './plantilla/pages/publicacion/mipublicaciones/mipublicaciones.component';
+import { DetalleComponent } from './plantilla/pages/publicacion/detalle/detalle.component';
 
 
 
@@ -30,6 +32,7 @@ import { MipublicacionesComponent } from './plantilla/pages/publicacion/mipublic
     CrearComponent,
     SobreNosotrosComponent,
     MipublicacionesComponent,
+    DetalleComponent,
 
   ],
 
@@ -50,7 +53,8 @@ import { MipublicacionesComponent } from './plantilla/pages/publicacion/mipublic
     RouterModule,
     FormsModule, 
     ReactiveFormsModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MomentModule
   ]
 
 })

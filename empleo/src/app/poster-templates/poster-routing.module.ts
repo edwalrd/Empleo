@@ -4,6 +4,7 @@ import { PosterPageComponent } from "./poster-templates.component";
 import { DashboardComponent } from './plantilla/pages/dashboard/dashboard.component';
 import { CrearComponent } from './plantilla/pages/publicacion/crear/crear.component';
 import { SobreNosotrosComponent } from './plantilla/pages/sobre-nosotros/sobre-nosotros.component';
+import { DetalleComponent } from './plantilla/pages/publicacion/detalle/detalle.component';
 
 import { AuthGuard } from "../guards/auth.guard";
 import { MipublicacionesComponent } from './plantilla/pages/publicacion/mipublicaciones/mipublicaciones.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path: 'dashboard' , component: DashboardComponent},
     {path: 'publicacion/crear' , component: CrearComponent},
     {path: 'publicacion/mipublicaciones' , component: MipublicacionesComponent},
+    {path: 'publicacion/detalle/:id' , component: DetalleComponent},
     {path: 'nosotro' , component: SobreNosotrosComponent},
 
 

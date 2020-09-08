@@ -6,36 +6,39 @@ export class Puesto {
 
         //Datos de la compañía
 
-        public empresa: string,
-        public ubicacion: string,
-        public paginaweb: string,
-        public actividad: string,
-        public logo: string,
-        public horario: string,
+        public empresa: String,
+        public nombre : String,
+        public ubicacion: String,
+        public paginaweb: String,
+        public actividad: String,
+        public logo: String,
+        public horario: String,
 
         ///Descripción del Puesto
 
-        public nombre: string,
-        public area: string,
-        public vacante: number,
-        public descripcion: string,
+      
+        public area: String,
+        public vacante: Number,
+        public descripcion: String,
 
         // Requisitos del puesto
 
-        public requisito: string,
-        public academico: string,
-        public experiencia: number,
-        public edad: string,
-        public sexo: string,
+        public requisito: String,
+        public academico: String,
+        public experiencia: Number,
+        public edad: String,
+        public sexo: String,
 
         // Jornada y Salario
 
-        public contrato: string,
-        public salario: string,
-        public modalidad: string,
-        public  jornada: string,
-        public horarioT: string,
-        public fecha: Date,
+        public contrato: String,
+        public salario: String,
+        public modalidad: String,
+        public  jornada: String,
+        public horarioT: String,
+        public fecha: any,
+
+   
 
 
     ) { }

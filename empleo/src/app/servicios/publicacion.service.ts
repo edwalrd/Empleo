@@ -38,10 +38,17 @@ export class PublicacionService {
     }
   }
 
-    TodoPuesto(): Observable<any> {
+  TodoPuesto(): Observable<any> {
 
-      return this._http.get(this.url+ 'puestos' , this.header);
-    }
+    return this._http.get(this.url + 'puestos', this.header);
+  }
+
+  unPuesto(id): Observable<any> {
+
+    return this._http.get(this.url + 'puestos/' + id, this.header);
+
+  }
+
 
   Crear(datos: Puesto): Observable<any> {
 

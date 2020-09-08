@@ -1,0 +1,73 @@
+<div class="mx-auto d-block " style="width: 80%;">
+
+
+    <h4 class="text-center">Datos generales</h4>
+
+
+    <h5 class="mb-4">{{datos?.nombre}}</h5>
+
+
+    <h6 class="mb-3">{{datos?.empresa}}</h6>
+
+    <p class="mb-3"> <b>Pagina web:</b>{{datos?.paginaweb}} </p>
+
+
+    <p class="mb-3">{{datos?.actividad}}</p>
+
+
+    <div class="mb-2"><b>Publicado haces: </b>{{datos?.fecha | amLocale:'es'  | amTimeAgo: true }}</div>
+
+
+    <br>
+
+
+    <hr>
+
+    <h4 class="text-center">Datos del puesto</h4>
+
+    <ul>
+
+        <li class="mb-3 mt-3"> <b> Area:</b>  {{datos?.area}} </li>
+
+
+        <li class="mb-3"> <b> Descripcion:</b>  {{datos?.descripcion}} </li>
+       
+       
+        <li class="mb-3"> <b> Cantida de Vacantes :</b>  {{datos?.vacante}} </li>
+
+
+        <li class="mb-3"> <b> Requisitos:</b>  {{datos?.requisito}} </li>
+
+        <br>
+
+        <li>Sexo: </li>
+
+        <br>
+
+        <li>Preferible: </li>
+
+        <br>
+
+        <li>Experiencia: </li>
+
+
+
+    </ul>
+
+
+    <div>
+
+        <h4 class="text-center">Condiciones laborales</h4>
+
+
+        <ul>
+            <li>Contrato: </li>
+            <li>Jornada: </li>
+            <li>Horario: </li>
+            <li>Sueldo: </li>
+        </ul>
+
+
+    </div>
+
+</div>
