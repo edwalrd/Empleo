@@ -1,0 +1,64 @@
+h1,h2,h3,h4,h5,h6 , p{
+    font-family: 'Oxygen', sans-serif;
+}
+
+.btn_negro{
+
+    border: 0;
+    color: black;
+    background-color: black;
+
+}
+
+a{
+   text-decoration: none;
+   color: black;
+}
+
+#public{
+
+    background-color: #fefefe;
+}
+
+#menu {
+    background-color: #363636;
+}
+
+#pies{
+    background-color: #363636;
+}
+
+#puesto{
+
+    background-color: #f6f6f6;
+}
+
+@media (max-width: 575.98px) { 
+
+ }
+
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+   
+
+  }
+
+@media (min-width: 768px) and (max-width: 991.98px) { 
+
+   
+
+ }
+
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+
+ 
+ }
+
+@media (min-width: 1200px) { 
+
+
+ }
+ 
+
+ /* krostyss o pcprogramasymas.com */

@@ -123,6 +123,8 @@ const controlador = {
 
         const token = req.body.token;
 
+        console.log(token);
+
         try {
             const { name, email, picture } = await googleVerify(token);
 

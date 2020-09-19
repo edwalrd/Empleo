@@ -22,8 +22,6 @@ export class HeaderComponent implements OnInit {
 
   this.usuario = this.services.person;
 
-  console.log(this.usuario);
-  
   }
 
   btnlogout() {

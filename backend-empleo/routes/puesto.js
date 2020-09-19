@@ -14,11 +14,13 @@ router.get('/puestos',  puestoController.getPuestos);
 
 router.get('/puestos/:id', puestoController.getOnePuesto);
 
+router.get('/puestos/busquedad/:search?', puestoController.busquedaPuesto);
+
 router.post('/puestos/crear', verificacion , puestoController.createPuestos);
 
-router.put('/puestos/:id', verificacion, roles_verificacion('admin , poster'), puestoController.updatePuesto);
+router.put('/puestos/editar/:id', puestoController.updatePuesto);
 
-router.delete('/puestos/:id', verificacion, roles_verificacion('admin , poster'), puestoController.deletePuesto);
+router.delete('/puestos/eliminar/:id', puestoController.deletePuesto);
 
 
 module.exports = router;

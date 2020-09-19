@@ -15,7 +15,20 @@
 
                 <label for="Puesto">Nombre del Puesto</label>
 
-                <input class="form-control" id="Puesto" type="text" placeholder="Nombre del Puesto">
+                <!-- <input class="form-control" id="Puesto" type="text" placeholder="Nombre del Puesto"> -->
+
+                <ng-autocomplete [data]="data " [searchKeyword]="keyword" [itemTemplate]="itemTemplate"
+                    [notFoundTemplate]="notFoundTemplate" (selected)='selectEvent($event)'
+                    (change)='buscar($event.target.value)' placeholder="Ingrese el nombre">
+                </ng-autocomplete>
+
+                <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.nombre"></a>
+                </ng-template>
+
+                <ng-template #notFoundTemplate let-notFound>
+                    <div [innerHTML]="notFound"></div>
+                </ng-template>
 
                 <hr>
 
@@ -45,10 +58,8 @@
 
                 <h6>Empresa</h6>
 
-                <ul>
-                    <li>alofoke radio</li>
-                    <li>mundord tv</li>
-                    <li>julio en la calle</li>
+                <ul *ngFor="let item of datos">
+                    <li>{{item.empresa}}</li>
 
                 </ul>
 
@@ -59,39 +70,52 @@
 
         <div class="col-md-8 ml-md-5 ">
 
-            <div *ngFor="let item of data | paginate: { itemsPerPage: 5, currentPage: paginaActual }; let i = index "
-                class="mt-4">
+            <div *ngIf="datos ; then verdadera else falsa"></div>
 
-                <hr>
-           
-                <a [routerLink]="['/poster/publicacion/detalle', item._id]" routerLinkActive="router-link-active" >
+
+            <ng-template #verdadera>
+                
+                <div *ngFor="let item of datos | paginate: { itemsPerPage: 5, currentPage: paginaActual }; let i = index "
+                    class="mt-4">
+
+                    <hr>
+
+                    <a [routerLink]="['/poster/publicacion/detalle', item._id]" routerLinkActive="router-link-active">
+
+                        <div class="row">
+                            <h5>{{item.nombre}}</h5>
+                        </div>
+                    </a>
 
                     <div class="row">
-                        <h5>{{item.nombre}}</h5>
+                        <p>{{item.empresa}}</p>
                     </div>
-                </a>
 
-                <div class="row">
-                    <p>{{item.empresa}}</p>
-                </div>
+                    <div class="row">
 
-                <div class="row">
+                        <p>{{item.descripcion}}</p>
+                    </div>
 
-                    <p>{{item.descripcion}}</p>
-                </div>
+                    <div class="row mt-2">
 
-                <div class="row mt-2">
+                        <div class="col-sm-2">{{item.fecha}}</div>
+                        <div class="col-sm-2">{{item.contrato}}</div>
+                        <div class="col-sm-2">{{item.salario}}</div>
+                        <div class="col-sm-2">{{item.jornada}}</div>
 
-                    <div class="col-sm-2">{{item.fecha}}</div>
-                    <div class="col-sm-2">{{item.contrato}}</div>
-                    <div class="col-sm-2">{{item.salario}}</div>
-                    <div class="col-sm-2">{{item.jornada}}</div>
+
+                    </div>
 
 
                 </div>
 
-                
-            </div>
+            </ng-template>
+
+            <ng-template #falsa>
+    
+               <h4 class="text-center ">No hay Puesto para mostrar</h4>
+            
+            </ng-template>
 
             <hr>
 

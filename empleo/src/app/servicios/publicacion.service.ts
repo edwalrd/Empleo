@@ -41,6 +41,12 @@ export class PublicacionService {
   TodoPuesto(): Observable<any> {
 
     return this._http.get(this.url + 'puestos', this.header);
+  } 
+  
+  Busqueda(value: any): Observable<any> {
+
+    return this._http.get(this.url + 'puestos/busquedad/'+ value , this.header);
+
   }
 
   unPuesto(id): Observable<any> {
@@ -54,6 +60,10 @@ export class PublicacionService {
 
     return this._http.post(this.url + "puestos/crear", datos, this.header);
 
+  }
+
+  eliminar(id): Observable<any> {
+    return this._http.delete(this.url + "puestos/eliminar/" + id, this.header)
   }
 
 

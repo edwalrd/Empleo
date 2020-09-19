@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { MomentModule } from 'angular2-moment'; 
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 
 // Componentes
 import { PosterPageComponent } from './poster-templates.component';
@@ -17,6 +18,7 @@ import { CrearComponent } from './plantilla/pages/publicacion/crear/crear.compon
 import { SobreNosotrosComponent } from './plantilla/pages/sobre-nosotros/sobre-nosotros.component';
 import { MipublicacionesComponent } from './plantilla/pages/publicacion/mipublicaciones/mipublicaciones.component';
 import { DetalleComponent } from './plantilla/pages/publicacion/detalle/detalle.component';
+import { PerfilComponent } from './opciones/perfil/perfil.component';
 
 
 
@@ -33,6 +35,7 @@ import { DetalleComponent } from './plantilla/pages/publicacion/detalle/detalle.
     SobreNosotrosComponent,
     MipublicacionesComponent,
     DetalleComponent,
+    PerfilComponent,
 
   ],
 
@@ -54,7 +57,8 @@ import { DetalleComponent } from './plantilla/pages/publicacion/detalle/detalle.
     FormsModule, 
     ReactiveFormsModule,
     NgxPaginationModule,
-    MomentModule
+    MomentModule,
+    AutocompleteLibModule
   ]
 
 })

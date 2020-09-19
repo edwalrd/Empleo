@@ -105,9 +105,10 @@ const puestoSchema = new Schema({
         type: String,
         required: true
     },
+    
     fecha: {
         type: Date,
-        default: Date.now()
+        default: new Date()
     }
 
 

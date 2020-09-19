@@ -2,6 +2,7 @@ const Puesto = require("../model/puesto");
 const validator = require("validator");
 
 
+
 const puestoController = {
 
 
@@ -37,7 +38,6 @@ const puestoController = {
     });
   },
 
-
   getOnePuesto: (req, res) => {
 
     const { id } = req.params;
@@ -64,6 +64,93 @@ const puestoController = {
         puesto
       })
     })
+
+  },
+
+  busquedaPuesto: (req, res) => {
+
+    let search = req.params.search;
+
+    if (search) {
+
+      const regx = new RegExp(search, 'i');
+
+      Puesto.find({
+        "$or": [
+
+          { nombre: regx },
+          { sexo: regx }
+
+        
+        ]
+
+      }).exec((err, puesto) => {
+
+        if (err) {
+
+          return res.status(200).send({
+            status: "Error",
+            mensaje: "Se ha producido un error" + err
+          });
+
+        }
+        if (!puesto) {
+
+          return res.status(404).send({
+
+            status: "ok",
+            mensaje: "No se a encontrado puesto"
+
+          });
+        }
+
+        return res.status(200).send({
+          status: "Ok",
+          puesto
+
+        });
+
+
+      })
+    }
+
+    else {
+
+      Puesto.find({}).exec((err, puesto) => {
+
+        if (err) {
+
+          return res.status(200).send({
+            status: "Error",
+            mensaje: "Se ha producido un error" + err
+          });
+
+        }
+        if (!puesto) {
+
+          return res.status(404).send({
+
+            status: "ok",
+            mensaje: "No se a encontrado puesto"
+
+          });
+        }
+
+        return res.status(200).send({
+          status: "Ok",
+          puesto
+
+        });
+
+
+      })
+
+
+    }
+
+
+
+
 
   },
 

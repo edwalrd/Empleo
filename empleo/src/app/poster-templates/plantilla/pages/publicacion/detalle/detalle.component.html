@@ -27,33 +27,26 @@
 
     <ul>
 
-        <li class="mb-3 mt-3"> <b> Area:</b>  {{datos?.area}} </li>
+        <li class="mb-3 mt-3"> <b> Area:</b> {{datos?.area}} </li>
 
 
-        <li class="mb-3"> <b> Descripcion:</b>  {{datos?.descripcion}} </li>
-       
-       
-        <li class="mb-3"> <b> Cantida de Vacantes :</b>  {{datos?.vacante}} </li>
+        <li class="mb-3"> <b> Descripcion:</b> {{datos?.descripcion}} </li>
 
 
-        <li class="mb-3"> <b> Requisitos:</b>  {{datos?.requisito}} </li>
-
-        <br>
-
-        <li>Sexo: </li>
-
-        <br>
-
-        <li>Preferible: </li>
-
-        <br>
-
-        <li>Experiencia: </li>
+        <li class="mb-3"> <b> Cantida de Vacantes :</b> {{datos?.vacante}} </li>
 
 
+        <li class="mb-3"> <b> Requisitos:</b> {{datos?.requisito}} </li>
+
+
+        <li class="mb-3"> <b> Sexo:</b> {{datos?.sexo}} </li>
+
+
+        <li class="mb-3"> <b> Preferible:</b> {{datos?.edad}} </li>
+
+        <li class="mb-3"> <b> Experiencia:</b> {{datos?.experiencia}} años </li>
 
     </ul>
-
 
     <div>
 
@@ -61,13 +54,29 @@
 
 
         <ul>
-            <li>Contrato: </li>
-            <li>Jornada: </li>
-            <li>Horario: </li>
-            <li>Sueldo: </li>
+            <li class="mb-3" ><b>Contrato:</b>  {{datos?.contrato}} </li>
+            <li class="mb-3" ><b>Jornada:</b>  {{datos?.jornada}} </li>
+            <li class="mb-3" ><b>Modalidad:</b>  {{datos?.modalidad}} </li>
+            <li class="mb-3" ><b>Horario:</b>  {{datos?.horarioT}} </li>
+            <li class="mb-3" ><b>Sueldo:</b>  {{datos?.salario || '---'}} </li>
         </ul>
 
+    </div>
+
+    <div class="row mt-5 mb-5">
+
+        <div class="col-sm "> 
+            
+            <button class="btn btn-warning float-right btn-block">Editar</button>
+        
+        </div>
+       <div class="col-sm"> 
+            
+        <button class="btn btn-danger btn-block " (click)="eliminar(datos._id)" >Eliminar</button>
+        
+        </div>
 
     </div>
 
 </div>
+

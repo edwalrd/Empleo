@@ -6,6 +6,7 @@ export class Puesto {
 
         //Datos de la compañía
 
+        public _id: String,
         public empresa: String,
         public nombre : String,
         public ubicacion: String,
@@ -34,7 +35,7 @@ export class Puesto {
         public contrato: String,
         public salario: String,
         public modalidad: String,
-        public  jornada: String,
+        public jornada: String,
         public horarioT: String,
         public fecha: any,
 

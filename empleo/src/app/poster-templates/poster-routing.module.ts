@@ -8,6 +8,7 @@ import { DetalleComponent } from './plantilla/pages/publicacion/detalle/detalle.
 
 import { AuthGuard } from "../guards/auth.guard";
 import { MipublicacionesComponent } from './plantilla/pages/publicacion/mipublicaciones/mipublicaciones.component';
+import { PerfilComponent } from './opciones/perfil/perfil.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,7 @@ const routes: Routes = [
     {path: 'publicacion/mipublicaciones' , component: MipublicacionesComponent},
     {path: 'publicacion/detalle/:id' , component: DetalleComponent},
     {path: 'nosotro' , component: SobreNosotrosComponent},
+    {path: 'perfil' , component: PerfilComponent},
 
 
   ]

@@ -1,142 +1,169 @@
-<div class="container-fluid mt-3">
+<nav id="menu" class="navbar navbar-expand-lg ">
 
-    <div class="row ">
-        <div class="col-sm-9 ">
+    <a class="navbar-brand text-white ml-4" [routerLink]="['./']">Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span>icono</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
 
-            <h3 class="ml-5">Logo</h3>
+            <a class=" nav-item nav-link text-white " [routerLink]="['/login']"
+                routerLinkActive="router-link-active">Publicar
+                Empleo</a>
 
-        </div>
-
-        <div class="col-sm-2 ">
-
-            <a [routerLink]="['/login']" routerLinkActive="router-link-active">Publicar Empleo</a>
-
-        </div>
-        <div class="col-sm-1 ">
-
-            <button class="btn btn-info btn-block btn-sm-5" [routerLink]="['/login']"
-                routerLinkActive="router-link-active">Login</button>
+            <a class=" nav-item nav-link text-white" [routerLink]="['/login']"
+                routerLinkActive="router-link-active">Login </a>
         </div>
     </div>
-</div>
+</nav>
 
 
+<section class="container">
 
-<div class="container mt-4 mx-auto d-block">
 
-    <div class="row ml-5">
+    <div id="formulario" class="container mt-4 mx-auto d-block">
 
-        <div class="col-sm-5 mt-2"><input class="form-control" type="text"></div>
-        <div class="col-sm-5 mt-2"><input class="form-control" type="text"></div>
-        <div class="col-sm-2 mt-2"><button class="btn btn-info">Buscar</button></div>
+        <div class="row ">
+
+            <div class="  col-md-5 mt-2">
+
+                <input class="form-control" type="text">
+
+            </div>
+
+            <div class=" col-md-5 mt-2">
+
+                <input class="form-control" type="text">
+            </div>
+
+            <div class="col-md-2 mt-2">
+
+                <button class="btn btn_negro text-white ">Buscar</button>
+
+            </div>
+        </div>
+
+        <div class="row mt-3">
+
+            <button type="button" class="btn  btn_negro text-white ml-4 " data-toggle="modal"
+                data-target="#exampleModal">
+                Busqueda Avanzada
+
+            </button>
+        </div>
+
+        <div class="row mt-2 ml-5">
+            <p class="text-dark"> 1,433 empleos publicados en Republica Dominicana</p>
+        </div>
+
     </div>
+</section>
 
-    <div class="row mt-3 ml-5">
-
-        <button type="button" class="btn btn-outline-light text-dark" data-toggle="modal" data-target="#exampleModal">
-            Busqueda Avanzada
-
-        </button>
-    </div>
-
-    <div class="row mt-2 ml-5">
-        <p class="text-black"> 1,433 empleos publicados en Republica Dominicana</p>
-    </div>
-
-</div>
 
 <!-- Cotenido del modal -->
 
 <app-buscador></app-buscador>
 
 
-<hr class="container-fluid">
+<hr>
 
-<div class="container">
+<section>
 
-    <div class="row">
+    <div class="container">
 
-        <div class="col-sm-11">
-            <h4 class="text-center">Empleos Recientes</h4>
+        <div class="row">
+
+            <h4 class="mx-auto ">Empleos Recientes</h4>
+
         </div>
+        <div>
 
-        <div class="col-sm-1">
-            <button class="btn btn-info ">Calendario</button>
+            <p class="text-right">{{hoy | date: 'dd/mm' }}</p>
+
         </div>
 
     </div>
 
-</div>
+</section>
 
-<div class="container m-5 mx-auto d-block">
+<section class="container-fluid m-5 mx-auto d-block ">
 
+    <div id="puesto" class="row p-3 ">
 
-    <div class="row">
-        <div class="col-sm-4 ">
+        <div class="col-sm-6 col-md-6 col-lg-4 ">
+
             <div class="card m-3">
+
                 <div class="card-body">
+
                     <h5 class="card-title">Puesto</h5>
+
                     <p class="card-text">Descripcion.</p>
-                    <a href="#" class="btn btn-primary">Ver</a>
+
+                    <a href="#" class="btn  btn_negro text-white">Ver</a>
                 </div>
             </div>
         </div>
-        <div class="col-sm-4 ">
+        <div class="col-sm-6 col-md-6 col-lg-4  ">
             <div class="card m-3">
                 <div class="card-body">
                     <h5 class="card-title">Puesto</h5>
                     <p class="card-text">Descripcion.</p>
-                    <a href="#" class="btn btn-primary">Ver</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-sm-4 ">
-            <div class="card m-3">
-                <div class="card-body">
-                    <h5 class="card-title">Puesto</h5>
-                    <p class="card-text">Descripcion.</p>
-                    <a href="#" class="btn btn-primary">Ver</a>
+                    <a href="#" class="btn btn_negro text-white">Ver</a>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-4 ">
+        <div class="col-sm-6 col-md-6 col-lg-4  ">
             <div class="card m-3">
                 <div class="card-body">
                     <h5 class="card-title">Puesto</h5>
                     <p class="card-text">Descripcion.</p>
-                    <a href="#" class="btn btn-primary">Ver</a>
+                    <a href="#" class="btn btn_negro text-white">Ver</a>
                 </div>
             </div>
         </div>
 
-
-        <div class="col-sm-4 ">
+        <div class="col-sm-6 col-md-6 col-lg-4  ">
             <div class="card m-3">
                 <div class="card-body">
                     <h5 class="card-title">Puesto</h5>
                     <p class="card-text">Descripcion.</p>
-                    <a href="#" class="btn btn-primary">Ver</a>
+                    <a href="#" class="btn btn_negro text-white">Ver</a>
                 </div>
             </div>
         </div>
 
 
-        <div class="col-sm-4 ">
+        <div class="col-sm-6 col-md-6 col-lg-4  ">
             <div class="card m-3">
                 <div class="card-body">
                     <h5 class="card-title">Puesto</h5>
                     <p class="card-text">Descripcion.</p>
-                    <a href="#" class="btn btn-primary">Ver</a>
+                    <a href="#" class="btn btn_negro text-white">Ver</a>
                 </div>
             </div>
         </div>
 
+
+        <div class=" col-sm-6 col-md-6 col-lg-4  ">
+            <div class="card m-3">
+                <div class="card-body">
+                    <h5 class="card-title">Puesto</h5>
+                    <p class="card-text">Descripcion.</p>
+                    <a href="#" class="btn btn_negro text-white">Ver</a>
+                </div>
+            </div>
+        </div>
 
     </div>
 
+</section>
+
+<hr>
+
+<div id="pies" class="jumbotron text-center text-white m-0 p-5">
+
+    <app-footer></app-footer>
 </div>
-
-
-<app-footer></app-footer>

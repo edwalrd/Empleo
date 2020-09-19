@@ -36,9 +36,6 @@ export class DetalleComponent implements OnInit {
 
           this.datos = data.puesto;
 
-          console.log(this.datos);
-
-
         }, (err) => {
 
           this.router.navigate(['poster/publicacion/mipublicaciones']);
@@ -46,6 +43,20 @@ export class DetalleComponent implements OnInit {
       )
 
     })
+
+  }
+
+
+  eliminar(id) {
+
+    
+    this._service.eliminar(id).subscribe(
+      done => {
+        this.router.navigate(['poster/publicacion/mipublicaciones'])
+      }, err => {
+        alert("Se ha producido un error" + err);
+      }
+    )
 
   }
 
