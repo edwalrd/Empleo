@@ -1,0 +1,100 @@
+<div class="container">
+
+    <div class="row">
+        <h3>{{puesto?.nombre}}</h3>
+
+    </div>
+
+    <div class="row mt-4">
+
+        <div class="col-12 col-md">
+            <div class="row mt-1">
+                <p><b>Santo Domingo</b></p>
+            </div>
+            <div class="row mt-1">
+                <p><b>{{puesto?.empresa}}</b></p>
+            </div>
+            <div class="row mt-1">
+                <p><b>{{puesto?.paginaweb}}</b></p>
+            </div>
+            <div class="row mt-1">
+                <p><b>{{puesto?.fecha}}</b></p>
+            </div>
+        </div>
+
+        <div class="col-12 col-md mx-auto-block">
+
+            <div class="row">
+                <p><b>Area:</b> {{puesto?.area}}</p>
+            </div>
+
+            <div class="row">
+                <p><b>Experiencia:</b> {{puesto?.experiencia}}</p>
+            </div>
+
+            <div class="row">
+                <p><b>Preferible:</b> {{puesto?.academico}}</p>
+            </div>
+
+            <div class="row">
+                <p><b>Sexo:</b> {{puesto?.sexo}}</p>
+            </div>
+
+            <div class="row">
+                <p><b># de vancante:</b> {{puesto?.vacante}}</p>
+            </div>
+
+        </div>
+
+        <div class="col-12 col-md ">
+
+            <div class="row ">
+                <p><b>Contrato:</b> {{puesto?.contrato}}</p>
+            </div>
+
+            <div class="row">
+                <p><b>Jornada:</b> {{puesto?.jornada}}</p>
+            </div>
+
+            <div class="row">
+                <p><b>Horario:</b> {{puesto?.horarioT}}</p>
+            </div>
+
+            <div class="row">
+                <p><b>Sueldo:</b> {{puesto?.salario}}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <h6>Quienes somos </h6>
+    </div>
+
+    <div class="row">
+        {{puesto?.actividad}}
+    </div>
+
+    <div class="row mt-2">
+        <h6>Descripcion de este puesto </h6>
+    </div>
+
+    <div class="row mt-2">
+        {{puesto?.descripcion}}
+    </div>
+
+    <div class="row mt-2">
+        <h6>Requisitos de este puesto </h6>
+    </div>
+    <div class="row mt-2">
+
+        {{puesto?.requisito}}
+
+    </div>
+
+
+
+</div>

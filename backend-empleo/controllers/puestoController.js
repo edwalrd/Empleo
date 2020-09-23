@@ -67,93 +67,6 @@ const puestoController = {
 
   },
 
-  busquedaPuesto: (req, res) => {
-
-    let search = req.params.search;
-
-    if (search) {
-
-      const regx = new RegExp(search, 'i');
-
-      Puesto.find({
-        "$or": [
-
-          { nombre: regx },
-          { sexo: regx }
-
-        
-        ]
-
-      }).exec((err, puesto) => {
-
-        if (err) {
-
-          return res.status(200).send({
-            status: "Error",
-            mensaje: "Se ha producido un error" + err
-          });
-
-        }
-        if (!puesto) {
-
-          return res.status(404).send({
-
-            status: "ok",
-            mensaje: "No se a encontrado puesto"
-
-          });
-        }
-
-        return res.status(200).send({
-          status: "Ok",
-          puesto
-
-        });
-
-
-      })
-    }
-
-    else {
-
-      Puesto.find({}).exec((err, puesto) => {
-
-        if (err) {
-
-          return res.status(200).send({
-            status: "Error",
-            mensaje: "Se ha producido un error" + err
-          });
-
-        }
-        if (!puesto) {
-
-          return res.status(404).send({
-
-            status: "ok",
-            mensaje: "No se a encontrado puesto"
-
-          });
-        }
-
-        return res.status(200).send({
-          status: "Ok",
-          puesto
-
-        });
-
-
-      })
-
-
-    }
-
-
-
-
-
-  },
-
   createPuestos: (req, res) => {
 
     const params = req.body;
@@ -249,6 +162,53 @@ const puestoController = {
 
   },
 
+  busquedaPuesto: (req, res) => {
+
+    let search = req.params.search;
+
+    if (search) {
+
+      const regx = new RegExp(search, 'i');
+
+      Puesto.find({
+        "$or": [
+
+          { nombre: regx },
+          { sexo: regx }
+
+        ]
+
+      }).exec((err, puesto) => {
+
+        if (err) {
+
+          return res.status(200).send({
+            status: "Error",
+            mensaje: "Se ha producido un error" + err
+          });
+
+        }
+        if (!puesto || puesto.length <= 0) {
+
+          return res.status(404).send({
+
+            status: "404",
+            mensaje: "No se han encontrado resultados. Por favor, modifica tu búsqueda."
+
+          });
+        }
+
+        return res.status(200).send({
+          status: "Ok",
+          puesto
+
+        });
+
+      })
+    }
+
+    
+  },
 };
 
 module.exports = puestoController;

@@ -1,0 +1,179 @@
+<div class="container mt-5">
+
+    <div class="row">
+
+        <div class="col-md-4  ">
+
+            <div>
+                <form [formGroup]="buscador" (submit)="buscar()">
+                    <div class="row ">
+
+                        <div class="col-sm-9">
+
+                            <div class="form-group">
+
+                                <label for="titulo"> Titulo del empleo</label>
+                                <input type="text" class="form-control" id="titulo" formControlName="palabra"
+                                    (change)="buscar()">
+                            </div>
+                            <div *ngIf="fail">
+                                <span class="text-danger">
+                                    <p>{{fail}}</p>
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-sm-9">
+
+                            <div class="form-group">
+
+                                <label for="Provincia">Provincia</label>
+                                <select class="form-control" id="Provincia">
+                                    <option *ngFor="let item of provincias" value="item">{{item}}</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <span>Ordernar por:</span>
+                    </div>
+
+                    <div class="col-sm-12 mt-2">
+                        <a [routerLink]="['/routePath']" routerLinkActive="">
+                            Fecha
+                        </a>
+                    </div>
+
+                    <div class="col-sm-12 mt-2">
+
+                        <a [routerLink]="['/routePath']" routerLinkActive="">
+
+                            Salario
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="row mt-4">
+
+                    <div class="col-sm-12">Búsquedas recientes</div>
+
+                    <ul>
+                        <li>Programador</li>
+                        <li>Angular</li>
+                        <li>Node</li>
+                    </ul>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-8 ">
+
+            <div class="row">
+
+                <div class="col-md-9">
+                    <p><b>Ofertas de empleo Programador en República Dominicana</b></p>
+                </div>
+
+                <div class="col-md-3">
+                    <p class="text-right"><b>{{total}} empleos</b></p>
+                </div>
+
+            </div>
+
+            <div *ngIf="datos.length > 0  ; then verdadera else falso">
+
+            </div>
+
+            <ng-template #verdadera>
+
+                <div
+                    *ngFor="let item of datos | paginate: { itemsPerPage: 15, currentPage: paginaActual }; let i = index ">
+
+                    <hr>
+
+                    <div class="row">
+
+                        <div class="col-md-12">
+
+                            <a [routerLink]="['']">
+
+                              <a [routerLink]="['/puesto' , item._id]"  > <h5>{{item.nombre}}</h5></a> 
+
+                            </a>
+
+                        </div>
+
+                        <div class="col-md-12">
+
+                            <p>{{item.empresa}}</p>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p>{{item.descripcion}}.</p>
+                        </div>
+
+                        <div class="col-md-12">
+                            <p>Publicado haces: {{item.fecha | amLocale:'es'  | amTimeAgo: true }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <pagination-controls class="ml-auto" (pageChange)="paginaActual = $event"></pagination-controls>
+
+                </div>
+
+            </ng-template>
+
+            <ng-template #falso>
+
+                <div class="row">
+
+                    <p>No se han encontrado resultados. Por favor, modifica tu búsqueda.</p>
+
+                    <div id="sugerencia"  class="col-12 mt-4 rounded">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <p>Sugerencias</p>
+                            </div>
+
+                            <div class="col-12">
+
+                                <ul>
+                                    <li>Pruebe palabras clave más comunes</li>
+                                    <li>Revise su ortografía</li>
+                                    <li>Evite abreviaciones</li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </ng-template>
+
+
+        </div>
+
+    </div>
+
+</div>

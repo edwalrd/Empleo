@@ -1,0 +1,80 @@
+
+
+export class areas {
+
+    public areas: any[] = [];
+
+    constructor() {
+
+        this.areas = [
+
+            'Administración',
+            'Aeronáutica',
+            'Agrimensura',
+            'Agronomía ,Agricultura',
+            'Arquitectura ,Construcción',
+            'Atención al Cliente',
+            'Banca Servicios , Financieros',
+            'Biblioteconomía , Documentación',
+            'Construcción' ,
+            'Ciencias Económicas',
+            'Ciencias Empresariales',
+            'Ciencias Sociales',
+            'Compras',
+            'Comunicación ,Publicidad , Medios',
+            'Consultoría ,Análisis',
+            'Contabilidad',
+            'Creatividad , Diseño ,Multimedia',
+            'Cuidado de Mayores y Dependientes',
+            'Cuidado de Niños',
+            'Derecho',
+            'Diseño Industrial',
+            'Electricidad , Electrónica',
+            'Farmacia',
+            'Finanzas',
+            'Física',
+            'Formación,  Docencia',
+            'Gestión Alta Dirección',
+            'Impuestos',
+            'Industria Producción Calidad',
+            'Informática Sistemas Internet',
+            'Ingeniería Civil Estructural',
+            'Ingeniería Eléctrica',
+            'Ingeniería Electromecánica',
+            'Ingeniería Electrónica',
+            'Ingeniería Industrial',
+            'Ingeniería Mecánica',
+            'Ingeniería Mecatrónica',
+            'Ingeniería Montes Caminos',
+            'Ingeniería Química',
+            'Ingeniería Sanitaria Ambiental',
+            'Ingeniería Sistemas',
+            'Ingeniería Telecomunicaciones',
+            'Investigación de Mercado',
+            'Investigación y Desarrollo',
+            'Letras , Humanidades , Filosofía',
+            'Logística , Distribución',
+            'Marketing',
+            'Medio Ambiente',
+            'Oficios diversos',
+            'Prevención de Riesgos',
+            'Psicología',
+            'Química , Biología',
+            'Recepción Centralita',
+            'Recursos Humanos',
+            'Salud ,Medicina',
+            'Secretariado',
+            'Seguridad y Salud Ocupacional',
+            'Seguros',
+            'Servicio Doméstico',
+            'Telecomunicaciones',
+            'Telemarketing',
+            'Trabajo Social',
+            'Traducción , Interpretación , Idiomas',
+            'Transporte',
+            'Turismo , Hostelería',
+            'Ventas'
+        ]
+
+    }
+}

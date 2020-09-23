@@ -1,1 +1,19 @@
-<p>header works!</p>
+<nav id="menu" class="navbar navbar-expand-lg fixed-top">
+
+    <a class="navbar-brand text-white ml-4" [routerLink]="['']">Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span>icono</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+
+            <a class=" nav-item nav-link text-white " [routerLink]="['/login']"
+                routerLinkActive="router-link-active">Publicar
+                Empleo</a>
+
+            <a class=" nav-item nav-link text-white" [routerLink]="['/login']"
+                routerLinkActive="router-link-active">Login </a>
+        </div>
+    </div>
+</nav>

@@ -1,48 +1,36 @@
-<nav id="menu" class="navbar navbar-expand-lg ">
-
-    <a class="navbar-brand text-white ml-4" [routerLink]="['./']">Logo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span>icono</span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav ml-auto">
-
-            <a class=" nav-item nav-link text-white " [routerLink]="['/login']"
-                routerLinkActive="router-link-active">Publicar
-                Empleo</a>
-
-            <a class=" nav-item nav-link text-white" [routerLink]="['/login']"
-                routerLinkActive="router-link-active">Login </a>
-        </div>
-    </div>
-</nav>
-
-
 <section class="container">
 
 
     <div id="formulario" class="container mt-4 mx-auto d-block">
 
-        <div class="row ">
+        <form (submit)="Buscar()" [formGroup]="Formbuscar">
 
-            <div class="  col-md-5 mt-2">
+            <div class="row ">
 
-                <input class="form-control" type="text">
+                <div class="  col-md-5 mt-2">
 
+                    <input class="form-control" type="text" placeholder="Palabra clave, profesion o area"
+                        formControlName="palabra">
+
+                </div>
+
+                <div class=" col-md-5 mt-2">
+
+                    <select class="form-control" id="Provincia" formControlName="provincia">
+                        <option value="" disabled>Seleciona una provincia...</option>
+                        <option *ngFor="let item of provincias" [ngValue]='item'>{{item}}</option>
+                    </select>
+
+                </div>
+
+                <div class="col-md-2 mt-2">
+
+                    <button class="btn btn_negro text-white ">Buscar</button>
+
+                </div>
             </div>
 
-            <div class=" col-md-5 mt-2">
-
-                <input class="form-control" type="text">
-            </div>
-
-            <div class="col-md-2 mt-2">
-
-                <button class="btn btn_negro text-white ">Buscar</button>
-
-            </div>
-        </div>
+        </form>
 
         <div class="row mt-3">
 
@@ -60,11 +48,9 @@
     </div>
 </section>
 
-
 <!-- Cotenido del modal -->
 
 <app-buscador></app-buscador>
-
 
 <hr>
 
@@ -87,83 +73,51 @@
 
 </section>
 
-<section class="container-fluid m-5 mx-auto d-block ">
+<section id="puesto" class="container-fluid m-5 mx-auto d-block ">
 
-    <div id="puesto" class="row p-3 ">
+    <div class="row p-3 ">
 
-        <div class="col-sm-6 col-md-6 col-lg-4 ">
+        <div *ngFor="let item of puesto | paginate: { itemsPerPage: 12, currentPage: paginaActual }; let i = index "
+            class="col-sm-6 col-md-6 col-lg-4 ">
 
             <div class="card m-3">
 
                 <div class="card-body">
 
-                    <h5 class="card-title">Puesto</h5>
+                    <h5 class="card-title text-center">{{item.nombre}}</h5>
 
-                    <p class="card-text">Descripcion.</p>
+                    <div class="row  m-2">
 
-                    <a href="#" class="btn  btn_negro text-white">Ver</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-6 col-lg-4  ">
-            <div class="card m-3">
-                <div class="card-body">
-                    <h5 class="card-title">Puesto</h5>
-                    <p class="card-text">Descripcion.</p>
-                    <a href="#" class="btn btn_negro text-white">Ver</a>
-                </div>
-            </div>
-        </div>
+                        <p class="card-text ml-2"><b>Horario:</b> {{item.horario}} de {{item.horarioT}}</p>
+                    </div>
 
-        <div class="col-sm-6 col-md-6 col-lg-4  ">
-            <div class="card m-3">
-                <div class="card-body">
-                    <h5 class="card-title">Puesto</h5>
-                    <p class="card-text">Descripcion.</p>
-                    <a href="#" class="btn btn_negro text-white">Ver</a>
-                </div>
-            </div>
-        </div>
+                    <div class="row m-2">
 
-        <div class="col-sm-6 col-md-6 col-lg-4  ">
-            <div class="card m-3">
-                <div class="card-body">
-                    <h5 class="card-title">Puesto</h5>
-                    <p class="card-text">Descripcion.</p>
-                    <a href="#" class="btn btn_negro text-white">Ver</a>
-                </div>
-            </div>
-        </div>
+                        <p class="card-text ml-2"><b>Nivel académico:</b> {{item.academico}}</p>
 
+                    </div>
 
-        <div class="col-sm-6 col-md-6 col-lg-4  ">
-            <div class="card m-3">
-                <div class="card-body">
-                    <h5 class="card-title">Puesto</h5>
-                    <p class="card-text">Descripcion.</p>
-                    <a href="#" class="btn btn_negro text-white">Ver</a>
-                </div>
-            </div>
-        </div>
+                    <div class="row m-2">
 
+                        <p class="card-text ml-2"><b>Numero de vacante:</b> {{item.vacante}}</p>
 
-        <div class=" col-sm-6 col-md-6 col-lg-4  ">
-            <div class="card m-3">
-                <div class="card-body">
-                    <h5 class="card-title">Puesto</h5>
-                    <p class="card-text">Descripcion.</p>
-                    <a href="#" class="btn btn_negro text-white">Ver</a>
+                    </div>
+
+                    <div class="row mt-3">
+
+                        <a [routerLink]="['/puesto', item._id]" class="btn  btn_negro text-white mx-auto d-block ">Ver</a>
+
+                    </div>
+
                 </div>
             </div>
         </div>
 
     </div>
 
+    <div class="row">
+        <pagination-controls class="ml-auto" (pageChange)="paginaActual = $event"></pagination-controls>
+
+    </div>
+
 </section>
-
-<hr>
-
-<div id="pies" class="jumbotron text-center text-white m-0 p-5">
-
-    <app-footer></app-footer>
-</div>

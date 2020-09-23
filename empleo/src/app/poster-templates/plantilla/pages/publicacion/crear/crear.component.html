@@ -131,8 +131,8 @@
 
                 <option selected="true" disabled="disabled">Seleccione una area</option>
 
-                <option *ngFor="let item of areas " [ngvalue]="item.value">
-                  {{item.viewValue}}
+                <option *ngFor="let item of area " [ngvalue]="item">
+                  {{item}}
                 </option>
 
               </select>
@@ -154,9 +154,10 @@
             <label for="vacante">Numero de vacante:</label>
             <select class="form-control" id="vacante" formControlName='vacante'>
 
-              <option *ngFor="let item of num" [ngvalue]="item.numvalue">
-                {{item.num}}</option>
-
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            
             </select>
 
           </div>
@@ -217,8 +218,8 @@
               <label for="cantida">Nivel académico:</label>
               <select class="form-control" formControlName='academico' id="cantida">
 
-                <option *ngFor="let item of academico" [ngvalue]="item.viewValue">
-                  {{item.value}}</option>
+                <option *ngFor="let item of academico" [ngvalue]="item">
+                  {{item}}</option>
 
               </select>
             </div>
@@ -270,8 +271,8 @@
               <label for="cantida">Rago de edad:</label>
               <select class="form-control" id="cantida" formControlName="edad">
 
-                <option *ngFor="let item of edad" [ngvalue]="item.viewValue">
-                  {{item.value}}</option>
+                <option *ngFor="let item of edad" [ngvalue]="item">
+                  {{item}}</option>
 
               </select>
             </div>
@@ -360,8 +361,8 @@
               <label for="Horario">Modalidad:</label>
               <select class="form-control" id="Modalidad" formControlName="modalidad">
 
-                <option *ngFor="let item of modalidad" [ngvalue]="item.viewValue">
-                  {{item.value}}</option>
+                <option *ngFor="let item of modalida" [ngvalue]="item">
+                  {{item}}</option>
 
               </select>
             </div>
